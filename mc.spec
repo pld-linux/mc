@@ -7,7 +7,6 @@
 %bcond_without	perl_vfs	# without perl depending vfs'es -- to avoid perl autoreq
 %bcond_with	samba		# with SAMBA vfs support
 %bcond_without	x		# without text edit in X support
-%bcond_without	blocker		# it's not a bug, it's a feature
 #
 Summary:	A user-friendly file manager and visual shell
 Summary(de.UTF-8):	Visuelle Shell Midnight Commander
@@ -46,7 +45,6 @@ Patch12:	%{name}-pld-developerfriendly.patch
 Patch17:	%{name}-nolibs.patch
 Patch24:	%{name}-find_options.patch
 URL:		http://www.midnight-commander.org/
-%{?with_blocker:BuildRequires:	rpmbuild_blocker}
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -77,6 +75,7 @@ Suggests:	rpm-utils
 Suggests:	tar
 Suggests:	unzip
 Obsoletes:	tkmc
+Obsoletes:	mc46
 Conflicts:	bash < 2.05b
 Conflicts:	rpm < 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -162,6 +161,7 @@ Requires(post,preun):	/sbin/chkconfig
 Requires:	pam >= 0.99.7.1-1
 Requires:	portmap
 Requires:	rc-scripts >= 0.4.1.5
+Obsoletes:	mc46serv
 
 %description -n mcserv
 The Midnight Commander file management system will allow you to
