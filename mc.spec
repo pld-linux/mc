@@ -54,6 +54,7 @@ BuildRequires:	libtool
 BuildRequires:	pam-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-perlprov
+BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
 BuildRequires:	slang-devel >= 2.2.1
