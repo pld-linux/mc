@@ -1,6 +1,6 @@
 diff -urNp mc-4.6.2-pre1.orig/edit/editdraw.c mc-4.6.2-pre1/edit/editdraw.c
---- mc-4.6.2-pre1.orig/edit/editdraw.c	2007-08-27 14:06:03.000000000 +0200
-+++ mc-4.6.2-pre1/edit/editdraw.c	2008-05-05 12:00:49.000000000 +0200
+--- mc-4.6.2-pre1.orig/src/editor/editdraw.c	2007-08-27 14:06:03.000000000 +0200
++++ mc-4.6.2-pre1/src/editor/editdraw.c	2008-05-05 12:00:49.000000000 +0200
 @@ -296,7 +296,7 @@
      }
  }
