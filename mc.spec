@@ -59,9 +59,9 @@ BuildRequires:	slang-devel >= 2.2.1
 %ifnarch s390 s390x
 BuildRequires:	gpm-devel
 %endif
-# Needed? %%{?with_perl_vfs:Requires:	perl-base}
-%{?with_x:BuildRequires:	xorg-lib-libX11-devel}
 %{?with_ext2undel:BuildRequires:	e2fsprogs-devel}
+%{?with_x:BuildRequires:	xorg-lib-libX11-devel}
+# Needed? %%{?with_perl_vfs:Requires:	perl-base}
 Requires:	file
 Requires:	pam >= 0.77.3
 Requires:	sed
@@ -73,8 +73,8 @@ Suggests:	p7zip-standalone
 Suggests:	rpm-utils
 Suggests:	tar
 Suggests:	unzip
-Obsoletes:	tkmc
 Obsoletes:	mc46
+Obsoletes:	tkmc
 Conflicts:	bash < 2.05b
 Conflicts:	rpm < 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -230,7 +230,7 @@ Commander. Вона забезпечує доступ до віддаленої 
 тільки власне Midnight Commander).
 
 %prep
-%setup -q -a3 -n %{name}-%{version}
+%setup -q -a3
 #rpm wrapper rewritten
 #%patch0 -p1
 %patch1 -p1
@@ -257,13 +257,13 @@ sed -i 's:|hxx|:|hh|hpp|hxx|tcc|:' misc/syntax/Syntax
 %{__autoconf}
 %{__automake}
 X11_WWW="
-if [ -f /usr/bin/iceweasel ]; then
+if [ -f %{_bindir}/iceweasel ]; then
 	iceweasel;
 else
-	if [ -f /usr/bin/galeon ]; then
+	if [ -f %{_bindir}/galeon ]; then
 		galeon
 	else
-		if [ -f /usr/bin/mozilla ]; then
+		if [ -f %{_bindir}/mozilla ]; then
 			mozilla
 		else
 			xterm -c lynx
@@ -407,10 +407,10 @@ fi
 %lang(sr) %{_mandir}/sr/man1/*
 
 %dir %{_sysconfdir}/mc
-%config(noreplace) %verify(not md5 mtime size) /etc/mc/Syntax
-%config(noreplace) %verify(not md5 mtime size) /etc/mc/*.*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mc/Syntax
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mc/*.*
 %dir %{_sysconfdir}/mc/extfs
-%config(noreplace) %verify(not md5 mtime size) /etc/mc/extfs/*.*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mc/extfs/*.*
 
 %files -n mcserv
 %defattr(644,root,root,755)
