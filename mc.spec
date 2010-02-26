@@ -49,11 +49,9 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel
-BuildRequires:	indent
 BuildRequires:	libtool
 BuildRequires:	pam-devel
 BuildRequires:	pkgconfig
-BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
