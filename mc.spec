@@ -66,13 +66,31 @@ Requires:	pam >= 0.77.3
 Requires:	sed
 Requires:	setup >= 2.4.6-2
 Suggests:	bzip2
+Suggests:	cabextract
+Suggests:	cpio
+Suggests:	dvi2tty
+Suggests:	enca
+Suggests:	file
 Suggests:	gzip
+Suggests:	isoinfo
+Suggests:	lha
+Suggests:	links
 Suggests:	lynx
+Suggests:	lzma
+Suggests:	nroff
+Suggests:	odt2txt
 Suggests:	p7zip-standalone
+Suggests:	pod2man
+Suggests:	ps2ascii
+Suggests:	rar
 Suggests:	rpm-utils
 Suggests:	tar
+Suggests:	unarj
 Suggests:	unzip
 Suggests:	xdg-utils
+Suggests:	xpdf-tools
+Suggests:	xz
+Suggests:	zoo
 Obsoletes:	mc46
 Obsoletes:	tkmc
 Conflicts:	bash < 2.05b
