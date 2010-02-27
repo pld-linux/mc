@@ -1,6 +1,5 @@
 # TODO:
 # - check spec-syntax,mo patches
-# - update ancient X11_WWW (or drop if it's no longer used)
 #
 # Conditional build:
 %bcond_with	ext2undel	# with ext2 undelete fs
@@ -21,12 +20,12 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.7.0.2
+Version:	4.7.0.3
 Release:	1
 License:	GPL v2+
 Group:		Applications/Shells
 Source0:	http://www.midnight-commander.org/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	4618626cacd3481e39719a4571c1b5be
+# Source0-md5:	4ad6ed6667ab2364992285712e3207ea
 Source1:	%{name}serv.pamd
 Source2:	%{name}serv.init
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
@@ -47,21 +46,21 @@ Patch24:	%{name}-find_options.patch
 URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
+%{?with_ext2undel:BuildRequires:	e2fsprogs-devel}
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel
+%ifnarch s390 s390x
+BuildRequires:	gpm-devel
+%endif
 BuildRequires:	libtool
 BuildRequires:	pam-devel
+# Needed? %%{?with_perl_vfs:Requires:	perl-base}
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
 BuildRequires:	slang-devel >= 2.2.1
-%ifnarch s390 s390x
-BuildRequires:	gpm-devel
-%endif
-%{?with_ext2undel:BuildRequires:	e2fsprogs-devel}
 %{?with_x:BuildRequires:	xorg-lib-libX11-devel}
-# Needed? %%{?with_perl_vfs:Requires:	perl-base}
 Requires:	file
 Requires:	pam >= 0.77.3
 Requires:	sed
@@ -73,6 +72,7 @@ Suggests:	p7zip-standalone
 Suggests:	rpm-utils
 Suggests:	tar
 Suggests:	unzip
+Suggests:	xdg-utils
 Obsoletes:	mc46
 Obsoletes:	tkmc
 Conflicts:	bash < 2.05b
@@ -256,21 +256,8 @@ sed -i 's:|hxx|:|hh|hpp|hxx|tcc|:' misc/syntax/Syntax
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
-X11_WWW="
-if [ -f %{_bindir}/iceweasel ]; then
-	iceweasel;
-else
-	if [ -f %{_bindir}/galeon ]; then
-		galeon
-	else
-		if [ -f %{_bindir}/mozilla ]; then
-			mozilla
-		else
-			xterm -c lynx
-		fi;
-	fi;
-fi"
 
+export X11_WWW="xdg-open"
 %configure \
 	--enable-dependency-tracking \
 	--enable-charset \
