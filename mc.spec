@@ -20,12 +20,12 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.7.0.3
+Version:	4.7.1
 Release:	1
 License:	GPL v2+
 Group:		Applications/Shells
 Source0:	http://www.midnight-commander.org/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	4ad6ed6667ab2364992285712e3207ea
+# Source0-md5:	5bd69a47b4a0bd6904623a50863b1eeb
 Source1:	%{name}serv.pamd
 Source2:	%{name}serv.init
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
@@ -48,7 +48,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_ext2undel:BuildRequires:	e2fsprogs-devel}
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel
+BuildRequires:	glib2-devel >= 2.8
 %ifnarch s390 s390x
 BuildRequires:	gpm-devel
 %endif
@@ -352,36 +352,36 @@ fi
 %lang(uk) %{_datadir}/mc/mc.hint.uk
 %lang(zh) %{_datadir}/mc/mc.hint.zh
 
-%dir %{_datadir}/mc/extfs
-%{_datadir}/mc/extfs/README
+%dir %{_libdir}/mc/extfs.d
+%{_libdir}/mc/extfs.d/README*
 %if %{with perl_vfs}
-%attr(755,root,root) %{_datadir}/mc/extfs/a
-%attr(755,root,root) %{_datadir}/mc/extfs/apt
-%attr(755,root,root) %{_datadir}/mc/extfs/deb*
-%attr(755,root,root) %{_datadir}/mc/extfs/dpkg
-%attr(755,root,root) %{_datadir}/mc/extfs/mailfs
-%attr(755,root,root) %{_datadir}/mc/extfs/patchfs
-%attr(755,root,root) %{_datadir}/mc/extfs/rpms
-%attr(755,root,root) %{_datadir}/mc/extfs/uzip
+%attr(755,root,root) %{_libdir}/mc/extfs.d/a+
+%attr(755,root,root) %{_libdir}/mc/extfs.d/apt+
+%attr(755,root,root) %{_libdir}/mc/extfs.d/deb*
+%attr(755,root,root) %{_libdir}/mc/extfs.d/dpkg+
+%attr(755,root,root) %{_libdir}/mc/extfs.d/mailfs
+%attr(755,root,root) %{_libdir}/mc/extfs.d/patchfs
+%attr(755,root,root) %{_libdir}/mc/extfs.d/rpms+
+%attr(755,root,root) %{_libdir}/mc/extfs.d/uzip
 %endif
-%attr(755,root,root) %{_datadir}/mc/extfs/audio
-%attr(755,root,root) %{_datadir}/mc/extfs/bpp
-%attr(755,root,root) %{_datadir}/mc/extfs/hp48
-%attr(755,root,root) %{_datadir}/mc/extfs/iso9660
-%attr(755,root,root) %{_datadir}/mc/extfs/lslR
-%attr(755,root,root) %{_datadir}/mc/extfs/rpm
-%attr(755,root,root) %{_datadir}/mc/extfs/s3
-%attr(755,root,root) %{_datadir}/mc/extfs/trpm
-%attr(755,root,root) %{_datadir}/mc/extfs/u7z
-%attr(755,root,root) %{_datadir}/mc/extfs/ualz
-%attr(755,root,root) %{_datadir}/mc/extfs/uar*
-%attr(755,root,root) %{_datadir}/mc/extfs/uace
-%attr(755,root,root) %{_datadir}/mc/extfs/uc1541
-%attr(755,root,root) %{_datadir}/mc/extfs/ucab
-%attr(755,root,root) %{_datadir}/mc/extfs/uha
-%attr(755,root,root) %{_datadir}/mc/extfs/ulha
-%attr(755,root,root) %{_datadir}/mc/extfs/urar
-%attr(755,root,root) %{_datadir}/mc/extfs/uzoo
+%attr(755,root,root) %{_libdir}/mc/extfs.d/audio
+%attr(755,root,root) %{_libdir}/mc/extfs.d/bpp
+%attr(755,root,root) %{_libdir}/mc/extfs.d/hp48+
+%attr(755,root,root) %{_libdir}/mc/extfs.d/iso9660
+%attr(755,root,root) %{_libdir}/mc/extfs.d/lslR
+%attr(755,root,root) %{_libdir}/mc/extfs.d/rpm
+%attr(755,root,root) %{_libdir}/mc/extfs.d/s3+
+%attr(755,root,root) %{_libdir}/mc/extfs.d/trpm
+%attr(755,root,root) %{_libdir}/mc/extfs.d/u7z
+%attr(755,root,root) %{_libdir}/mc/extfs.d/uace
+%attr(755,root,root) %{_libdir}/mc/extfs.d/ualz
+%attr(755,root,root) %{_libdir}/mc/extfs.d/uar*
+%attr(755,root,root) %{_libdir}/mc/extfs.d/uc1541
+%attr(755,root,root) %{_libdir}/mc/extfs.d/ucab
+%attr(755,root,root) %{_libdir}/mc/extfs.d/uha
+%attr(755,root,root) %{_libdir}/mc/extfs.d/ulha
+%attr(755,root,root) %{_libdir}/mc/extfs.d/urar
+%attr(755,root,root) %{_libdir}/mc/extfs.d/uzoo
 %{_desktopdir}/mc.desktop
 %{_pixmapsdir}/mc.png
 
@@ -396,8 +396,6 @@ fi
 %dir %{_sysconfdir}/mc
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mc/Syntax
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mc/*.*
-%dir %{_sysconfdir}/mc/extfs
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mc/extfs/*.*
 
 %files -n mcserv
 %defattr(644,root,root,755)
