@@ -1,0 +1,11 @@
+--- /home/users/baggins/devel/PLD/rpm/BUILD/mc-4.7.1/src/screen.c~	2010-02-26 13:01:54.000000000 +0100
++++ /home/users/baggins/devel/PLD/rpm/BUILD/mc-4.7.1/src/screen.c	2010-04-13 15:32:52.053186905 +0200
+@@ -2403,7 +2403,7 @@
+     search = mc_search_new (esc_str, -1);
+     search->search_type = MC_SEARCH_T_GLOB;
+     search->is_entire_line = TRUE;
+-    search->is_case_sentitive = 0;
++    search->is_case_sentitive = 1;
+ 
+     sel = panel->selected;
+     for (i = panel->selected; !wrapped || i != panel->selected; i++)
