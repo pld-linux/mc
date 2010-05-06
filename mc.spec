@@ -20,13 +20,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.7.1
-Release:	4
+Version:	4.7.2
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Shells
 Source0:	http://www.midnight-commander.org/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	5bd69a47b4a0bd6904623a50863b1eeb
+# Source0-md5:	82d0f923f686e462eeb739760f8c45bd
 Source1:	%{name}serv.pamd
 Source2:	%{name}serv.init
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
@@ -44,7 +44,6 @@ Patch11:	%{name}-noperl-vfs.patch
 Patch12:	%{name}-pld-developerfriendly.patch
 Patch17:	%{name}-nolibs.patch
 Patch24:	%{name}-find_options.patch
-Patch25:	%{name}-case_sensitive_quick_search.patch
 URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -265,7 +264,6 @@ Commander. Вона забезпечує доступ до віддаленої 
 %if "%{pld_release}" == "ti"
 %patch24 -p1
 %endif
-%patch25 -p1
 
 rm -f po/stamp-po
 
