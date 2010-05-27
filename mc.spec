@@ -1,5 +1,10 @@
 # TODO:
 # - check spec-syntax,mo patches
+# - drop these S?
+#warn: mc-4.7.2-1.x86_64: suggested isoinfo not found, skipped
+#warn: mc-4.7.2-1.x86_64: suggested nroff not found, skipped
+#warn: mc-4.7.2-1.x86_64: suggested pod2man not found, skipped
+#warn: mc-4.7.2-1.x86_64: suggested ps2ascii not found, skipped
 #
 # Conditional build:
 %bcond_with	ext2undel	# with ext2 undelete fs
