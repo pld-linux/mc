@@ -20,18 +20,15 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.7.2
+Version:	4.7.3
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Shells
 Source0:	http://www.midnight-commander.org/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	82d0f923f686e462eeb739760f8c45bd
-Source1:	%{name}serv.pamd
-Source2:	%{name}serv.init
+# Source0-md5:	42eb806d733b11d0d13ff7ee5fd1a03c
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
-Source6:	%{name}serv.sysconfig
 Source7:	%{name}.desktop
 Source8:	%{name}.png
 Patch0:		%{name}-rpmfs.patch
@@ -93,6 +90,8 @@ Suggests:	xpdf-tools
 Suggests:	xz
 Suggests:	zoo
 Obsoletes:	mc46
+Obsoletes:	mc46serv
+Obsoletes:	mcserv
 Obsoletes:	tkmc
 Conflicts:	bash < 2.05b
 Conflicts:	rpm < 4.0
@@ -161,93 +160,6 @@ yetenekli bir görsel kabuktur. Metin ekranda çalışır ve GPM
 çalışıyorsa fare desteği vardır. En hoş özellikleri FTP yapabilmesi,
 tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 
-%package -n mcserv
-Summary:	Server for the Midnight Commander network file management system
-Summary(de.UTF-8):	Midnight Commander File-Server
-Summary(es.UTF-8):	Servidor de archivos del Midnight Commander
-Summary(fr.UTF-8):	Serveur réseau pour le gestionnaire de fichiers Midnight Commander
-Summary(hu.UTF-8):	Midnight Commander Fájlszerver
-Summary(ja.UTF-8):	Midnight Commander でネットワークファイルマネージメントを行うサーバ
-Summary(pl.UTF-8):	Serwer plików Midnight Commandera
-Summary(pt_BR.UTF-8):	Servidor de arquivos do Midnight Commander
-Summary(ru.UTF-8):	Midnight Commander файл-сервер
-Summary(tr.UTF-8):	Midnight Commander dosya sunucusu
-Summary(uk.UTF-8):	Midnight Commander файл-сервер
-Summary(zh_CN.UTF-8):	mc 网络文件管理系统的服务器。
-Group:		Daemons
-Requires(post,preun):	/sbin/chkconfig
-Requires:	pam >= 0.99.7.1-1
-Requires:	portmap
-Requires:	rc-scripts >= 0.4.1.5
-Obsoletes:	mc46serv
-
-%description -n mcserv
-The Midnight Commander file management system will allow you to
-manipulate the files on a remote machine as if they were local. This
-is only possible if the remote machine is running the mcserv server
-program. Mcserv provides clients running Midnight Commander with
-access to the host's file systems.
-
-%description -n mcserv -l de.UTF-8
-mcserv ist das Server-Programm für das Netzwerkdateisystem Midnight
-Commander. Es ermöglicht den Zugriff auf das Host-Dateisystem für
-Clients, die das Midnight-Dateisystem ausführen (z.Zt. nur Midnight
-Commander file manager).
-
-%description -n mcserv -l es.UTF-8
-Mcserv es un servidor para el sistema de archivos en red del Midnight
-Commander. Permite que clientes usando el mc accedan remotamente al
-sistema de archivos de la máquina en que está ejecutando.
-
-%description -n mcserv -l fr.UTF-8
-Le système de gestion de fichier Midnight Commander vous permet de
-manipuler des fichiers sur une machine distante comme si ils étaient
-sur votre propre machine. Ceci est possible seulement si la machine
-distante possède le programme mcserv et que celui-ci est activé.
-Mcserv apporte aux machines clientes qui font tourner Midnight
-Commander un accès aux fichiers situés sur l'hôte.
-
-%description -n mcserv -l hu.UTF-8
-A Midnight Commander fájlkezelő rendszer lehetőséget nyújt a távoli
-gépen fájlok módosításához. Ez akkor lehetséges, ha a távoli gépen fut
-az mcserv szerver program. Az mcserv-vel a futó Midnight Commander
-kliensként csatlakozik a távoli gép fájlrendszeréhez.
-
-%description -n mcserv -l ja.UTF-8
-Midnight Commander
-のファイル管理システムは、リモートマシンにあるファイルを
-ローカルにあるかのように扱うことができます。この機能は mcserv
-プログラムを 実行しているリモートマシンに対してのみ働きます。 Mcserv
-は Midnight Commander
-クライアントに対して、このホストのファイルシステムを提供します。
-
-%description -n mcserv -l pl.UTF-8
-Mcserv jest aplikacją dla sieciowego systemu plików Midnight
-Commandera. Pozwala na dostęp do systemu plików dla klienta
-pracującego pod MC i używającego jego systemu plików.
-
-%description -n mcserv -l pt_BR.UTF-8
-Mcserv é um servidor para o sistema de arquivos em rede do Midnight
-Commander. Ele permite que clientes usando o mc acessem remotamente o
-sistema de arquivos da máquina em que está rodando.
-
-%description -n mcserv -l ru.UTF-8
-mcserv - это серверная программа для сетевой файловой системы Midnight
-Commander. Она обеспечивает доступ к удаленной файловой системе
-клиентам, поддерживающим файловую систему Midnight Commander (в
-настоящее время только собственно Midnight Commander).
-
-%description -n mcserv -l tr.UTF-8
-mcserv, Midnight Commander ağ dosya sisteminin sunucu programıdır.
-Midnight dosya sistemini çalıştıran istemcilerin sunucu dosya
-sistemine erişimini sağlar.
-
-%description -n mcserv -l uk.UTF-8
-mcserv - це серверна програма для мережевої файлової системи Midnight
-Commander. Вона забезпечує доступ до віддаленої файлової системи
-клієнтам, що підтримують файлову систему Midnight Commander (наразі
-тільки власне Midnight Commander).
-
 %prep
 %setup -q -a3
 #rpm wrapper rewritten
@@ -278,20 +190,15 @@ sed -i 's:|hxx|:|hh|hpp|hxx|tcc|:' misc/syntax/Syntax
 
 export X11_WWW="xdg-open"
 %configure \
-	--enable-dependency-tracking \
-	--enable-charset \
 	--with%{!?debug:out}-debug \
 	--with%{!?with_ext2undel:out}-ext2undel \
 	--with%{!?with_x:out}-x \
 	--with-vfs \
-	--enable-vfs-mcfs \
-	--enable-mcserver \
 	%{?with_samba:--with-samba} \
 	--with-configdir=/etc/samba \
 	--with-codepagedir=/etc/samba/codepages \
 	--with-gpm-mouse \
-	--with-screen=slang \
-	--with-edit
+	--with-screen=slang
 
 %{__make}
 
@@ -304,9 +211,6 @@ install -d $RPM_BUILD_ROOT{%{_sbindir},%{_pixmapsdir},%{_desktopdir}} \
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/pam.d/mcserv
-install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/mcserv
-install %{SOURCE6} $RPM_BUILD_ROOT/etc/sysconfig/mcserv
 install %{SOURCE7} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE8} $RPM_BUILD_ROOT%{_pixmapsdir}
 
@@ -327,16 +231,6 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/be-tarask
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%post -n mcserv
-/sbin/chkconfig --add mcserv
-%service mcserv restart "mcserv daemon"
-
-%preun -n mcserv
-if [ "$1" = "0" ]; then
-	%service mcserv stop
-	/sbin/chkconfig --del mcserv
-fi
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
@@ -401,6 +295,9 @@ fi
 %attr(755,root,root) %{_libdir}/mc/extfs.d/ulha
 %attr(755,root,root) %{_libdir}/mc/extfs.d/urar
 %attr(755,root,root) %{_libdir}/mc/extfs.d/uzoo
+%dir %{_libdir}/mc/fish
+%{_libdir}/mc/fish/README.fish
+%attr(755,root,root) %{_libdir}/mc/fish/[a-z]*
 %{_desktopdir}/mc.desktop
 %{_pixmapsdir}/mc.png
 
@@ -415,14 +312,3 @@ fi
 %dir %{_sysconfdir}/mc
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mc/Syntax
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mc/*.*
-
-%files -n mcserv
-%defattr(644,root,root,755)
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/*
-%attr(754,root,root) /etc/rc.d/init.d/mcserv
-%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/mcserv
-%{_mandir}/man8/mcserv.8*
-%lang(es) %{_mandir}/es/man8/mcserv.8*
-%lang(pl) %{_mandir}/pl/man8/mcserv.8*
-%lang(sr) %{_mandir}/sr/man8/mcserv.8*
-%attr(755,root,root) %{_sbindir}/mcserv

@@ -1,6 +1,0 @@
-#%PAM-1.0
-auth		required	pam_listfile.so item=user sense=deny file=/etc/security/blacklist.mcserv onerr=succeed
-auth		include		system-auth
-account		required	pam_shells.so
-account		required	pam_nologin.so
-account		include		system-auth
