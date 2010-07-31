@@ -1,10 +1,5 @@
 # TODO:
 # - check spec-syntax,mo patches
-# - drop these S?
-#warn: mc-4.7.2-1.x86_64: suggested isoinfo not found, skipped
-#warn: mc-4.7.2-1.x86_64: suggested nroff not found, skipped
-#warn: mc-4.7.2-1.x86_64: suggested pod2man not found, skipped
-#warn: mc-4.7.2-1.x86_64: suggested ps2ascii not found, skipped
 #
 # Conditional build:
 %bcond_with	ext2undel	# with ext2 undelete fs
@@ -73,21 +68,21 @@ Requires:	sed
 Requires:	setup >= 2.4.6-2
 Suggests:	bzip2
 Suggests:	cabextract
+Suggests:	cdrtools-utils
 Suggests:	cpio
 Suggests:	dvi2tty
 Suggests:	enca
 Suggests:	file
+Suggests:	ghostscript
+Suggests:	groff
 Suggests:	gzip
-Suggests:	isoinfo
 Suggests:	lha
 Suggests:	links
 Suggests:	lynx
 Suggests:	lzma
-Suggests:	nroff
 Suggests:	odt2txt
 Suggests:	p7zip-standalone
-Suggests:	pod2man
-Suggests:	ps2ascii
+Suggests:	perl-tools-pod
 Suggests:	rar
 Suggests:	rpm-utils
 Suggests:	tar
