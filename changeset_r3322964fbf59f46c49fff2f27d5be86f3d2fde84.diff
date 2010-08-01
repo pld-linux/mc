@@ -1,0 +1,43 @@
+Index: src/editor/editcmd.c
+===================================================================
+--- src/editor/editcmd.c (revision 49f70b533903bb91f9ae915d6285c896359f7fc9)
++++ src/editor/editcmd.c (revision 11e335cdba4b4915f37146b7d268d8dabb3ef0b7)
+@@ -1647,11 +1647,12 @@
+ #ifdef HAVE_CHARSET
+     GString *tmp;
++
+     tmp = str_convert_to_display (str);
+-
+-    if (tmp && tmp->len)
+-    {
+-        return g_string_free (tmp, FALSE);
+-    }
+-    g_string_free (tmp, TRUE);
++    if (tmp != NULL)
++    {
++        if (tmp->len != 0)
++            return g_string_free (tmp, FALSE);
++        g_string_free (tmp, TRUE);
++    }
+ #endif
+     return g_strdup (str);
+@@ -1663,12 +1664,12 @@
+ #ifdef HAVE_CHARSET
+     GString *tmp;
++
+     tmp = str_convert_to_input (str);
+-
+-    if (tmp && tmp->len)
+-    {
+-        return g_string_free (tmp, FALSE);
+-    }
+-    g_string_free (tmp, TRUE);
+-    return g_strdup (str);
++    if (tmp != NULL)
++    {
++        if (tmp->len != 0)
++            return g_string_free (tmp, FALSE);
++        g_string_free (tmp, TRUE);
++    }
+ #endif
+     return g_strdup (str);

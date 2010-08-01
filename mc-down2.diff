@@ -1,0 +1,45 @@
+diff -ur -ruNp mc-4.7.2.orig/src/viewer/move.c mc-4.7.2/src/viewer/move.c
+--- mc-4.7.2.orig/src/viewer/move.c	2010-05-06 14:06:38.000000000 +0200
++++ mc-4.7.2/src/viewer/move.c	2010-05-09 18:54:15.000000000 +0200
+@@ -154,35 +154,33 @@ mcview_move_down (mcview_t * view, off_t
+     else
+     {
+         off_t i;
+-        off_t new_offset = 0;
++        off_t new_offset;
+ 
+         if (view->dpy_end - view->dpy_start > last_byte - view->dpy_end)
+         {
+-            i = 0;
+-            new_offset = view->dpy_end;
+-            while (view->dpy_end < last_byte && lines-- > 0)
++            while (lines-- > 0)
+             {
+                 new_offset = mcview_eol (view, view->dpy_end);
+                 if (view->text_wrap_mode)
+                     new_offset = min (new_offset, view->dpy_end + view->data_area.width);
+                 view->dpy_end = new_offset;
++                if(view->dpy_end>=last_byte) lines=0;
+ 
+                 new_offset = mcview_eol (view, view->dpy_start);
+                 if (view->text_wrap_mode)
+                     new_offset = min (new_offset, view->dpy_start + view->data_area.width);
+-                view->dpy_start = new_offset;
++                if(new_offset<last_byte) view->dpy_start = new_offset;
+             }
+-            view->dpy_end = last_byte;
+         }
+         else
+         {
+ 
+-            for (i = 0; i < lines && view->dpy_end < last_byte && new_offset < last_byte; i++)
++            for (i = 0; i < lines && new_offset < last_byte; i++)
+             {
+                 new_offset = mcview_eol (view, view->dpy_start);
+                 if (view->text_wrap_mode)
+                     new_offset = min (new_offset, view->dpy_start + view->data_area.width);
+-                view->dpy_start = new_offset;
++                if(new_offset<last_byte) view->dpy_start = new_offset;
+             }
+         }
+     }
