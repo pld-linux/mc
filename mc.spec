@@ -20,13 +20,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.7.3
-Release:	2
+Version:	4.7.4
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Shells
 Source0:	http://www.midnight-commander.org/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	42eb806d733b11d0d13ff7ee5fd1a03c
+# Source0-md5:	ae07f873b91e8a2e4a3b081f1adedd2e
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
@@ -37,13 +37,9 @@ Patch2:		%{name}-down2.diff
 Patch4:		%{name}-home_etc2.patch
 Patch5:		%{name}-pl.patch
 Patch6:		%{name}-no-ws-visible.patch
-Patch7:		changeset_rce12059b0e7c7df3b7a1ebc908d48e4eb3b454e5.diff
-Patch8:		changeset_r2ac7aeadc8560e8830877677192d0c28290c6a33.diff
-Patch9:		changeset_r3322964fbf59f46c49fff2f27d5be86f3d2fde84.diff
 Patch11:	%{name}-noperl-vfs.patch
 # at now syntax highligthing for PLD-update-TODO and CVSROOT/users
 Patch12:	%{name}-pld-developerfriendly.patch
-Patch17:	%{name}-nolibs.patch
 Patch24:	%{name}-find_options.patch
 URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf
@@ -175,12 +171,8 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 # doesn't apply
 #%patch5 -p1
 %patch6 -p1
-%patch7 -p0
-%patch8 -p0
-%patch9 -p0
 %{!?with_perl_vfs:%patch11 -p1}
 %patch12 -p1
-%patch17 -p1
 %if "%{pld_release}" == "ti"
 %patch24 -p1
 %endif
