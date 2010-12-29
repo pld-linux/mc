@@ -1,13 +1,12 @@
-diff -urNp mc-4.7.0-pre4.orig/src/main.c mc-4.7.0-pre4/src/main.c
---- mc-4.7.2.orig/src/main.c	2010-05-05 20:30:03.000000000 +0200
-+++ mc-4.7.2/src/main.c	2010-05-06 10:05:13.000000000 +0200
-@@ -1470,6 +1470,9 @@ init_xterm_support (void)
+--- mc-4.7.5/src/filemanager/midnight.c.orig	2010-12-28 10:30:45.000000000 +0100
++++ mc-4.7.5/src/filemanager/midnight.c	2010-12-29 00:10:55.000000000 +0100
+@@ -750,6 +750,9 @@ init_xterm_support (void)
          || strcmp (termvalue, "Eterm") == 0 || strcmp (termvalue, "dtterm") == 0)
      {
          xterm_flag = 1;
 +#ifdef HAVE_SLANG
 +	tty_display_8bit (0);
-+#endif
++#endif  
  
          /* Default to the standard xterm sequence */
          if (!xmouse_seq)

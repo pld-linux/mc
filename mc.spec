@@ -20,20 +20,19 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.7.4
-Release:	2.1
+Version:	4.7.5
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Shells
 Source0:	http://www.midnight-commander.org/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	ae07f873b91e8a2e4a3b081f1adedd2e
+# Source0-md5:	4eb2438b168fb0f93b748889a9294f54
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
 Source8:	%{name}.png
 Patch0:		%{name}-rpmfs.patch
 Patch1:		slang-8bit_xterm.patch
-Patch2:		%{name}-down2.diff
 Patch4:		%{name}-home_etc2.patch
 Patch5:		%{name}-pl.patch
 Patch6:		%{name}-no-ws-visible.patch
@@ -165,7 +164,6 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 #rpm wrapper rewritten
 #%patch0 -p1
 %patch1 -p1
-%patch2 -p1
 # doesn't apply
 #%patch4 -p1
 # doesn't apply
@@ -190,13 +188,11 @@ sed -i 's:|hxx|:|hh|hpp|hxx|tcc|:' misc/syntax/Syntax
 
 export X11_WWW="xdg-open"
 %configure \
-	--with%{!?debug:out}-debug \
-	--with%{!?with_ext2undel:out}-ext2undel \
+	%{?with_ext2undel:--enable-vfs-undelfs} \
+	%{?with_samba:--enable-vfs-smb} \
+	--with-smb-configdir=/etc/samba \
+	--with-smb-codepagedir=/etc/samba/codepages \
 	--with%{!?with_x:out}-x \
-	--with-vfs \
-	%{?with_samba:--with-samba} \
-	--with-configdir=/etc/samba \
-	--with-codepagedir=/etc/samba/codepages \
 	--with-gpm-mouse \
 	--with-screen=slang
 
@@ -225,8 +221,6 @@ done
 
 install contrib/{mc.sh,mc.csh} $RPM_BUILD_ROOT/etc/shrc.d
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/be@tarask
-
 %find_lang %{name}
 
 %clean
@@ -235,35 +229,38 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc NEWS README
-%attr(755,root,root) %{_bindir}/mc*
 %config /etc/shrc.d/*
-%attr(755,root,root) %{_libdir}/mc/cons.saver
+%attr(755,root,root) %{_bindir}/mc*
 %dir %{_libdir}/mc
+%attr(755,root,root) %{_libdir}/mc/cons.saver
 %attr(755,root,root) %{_libdir}/mc/*.sh
 %attr(755,root,root) %{_libdir}/mc/*.csh
 %dir %{_datadir}/mc
 
+%{_datadir}/mc/mc.*
 %{_datadir}/mc/skins
 %{_datadir}/mc/syntax
 
-%{_datadir}/mc/mc.hlp
-%lang(es) %{_datadir}/mc/mc.hlp.es
-%lang(hu) %{_datadir}/mc/mc.hlp.hu
-%lang(it) %{_datadir}/mc/mc.hlp.it
-%lang(pl) %{_datadir}/mc/mc.hlp.pl
-%lang(ru) %{_datadir}/mc/mc.hlp.ru
-%lang(sr) %{_datadir}/mc/mc.hlp.sr
-%{_datadir}/mc/mc.hint
-%lang(cs) %{_datadir}/mc/mc.hint.cs
-%lang(es) %{_datadir}/mc/mc.hint.es
-%lang(hu) %{_datadir}/mc/mc.hint.hu
-%lang(it) %{_datadir}/mc/mc.hint.it
-%lang(nl) %{_datadir}/mc/mc.hint.nl
-%lang(pl) %{_datadir}/mc/mc.hint.pl
-%lang(ru) %{_datadir}/mc/mc.hint.ru
-%lang(sr) %{_datadir}/mc/mc.hint.sr
-%lang(uk) %{_datadir}/mc/mc.hint.uk
-%lang(zh) %{_datadir}/mc/mc.hint.zh
+%dir %{_datadir}/mc/help
+%{_datadir}/mc/help/mc.hlp
+%lang(es) %{_datadir}/mc/help/mc.hlp.es
+%lang(hu) %{_datadir}/mc/help/mc.hlp.hu
+%lang(it) %{_datadir}/mc/help/mc.hlp.it
+%lang(pl) %{_datadir}/mc/help/mc.hlp.pl
+%lang(ru) %{_datadir}/mc/help/mc.hlp.ru
+%lang(sr) %{_datadir}/mc/help/mc.hlp.sr
+%dir %{_datadir}/mc/hints
+%{_datadir}/mc/hints/mc.hint
+%lang(cs) %{_datadir}/mc/hints/mc.hint.cs
+%lang(es) %{_datadir}/mc/hints/mc.hint.es
+%lang(hu) %{_datadir}/mc/hints/mc.hint.hu
+%lang(it) %{_datadir}/mc/hints/mc.hint.it
+%lang(nl) %{_datadir}/mc/hints/mc.hint.nl
+%lang(pl) %{_datadir}/mc/hints/mc.hint.pl
+%lang(ru) %{_datadir}/mc/hints/mc.hint.ru
+%lang(sr) %{_datadir}/mc/hints/mc.hint.sr
+%lang(uk) %{_datadir}/mc/hints/mc.hint.uk
+%lang(zh) %{_datadir}/mc/hints/mc.hint.zh
 
 %dir %{_libdir}/mc/extfs.d
 %{_libdir}/mc/extfs.d/README*
@@ -310,5 +307,4 @@ rm -rf $RPM_BUILD_ROOT
 %lang(sr) %{_mandir}/sr/man1/*
 
 %dir %{_sysconfdir}/mc
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mc/Syntax
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mc/*.*
