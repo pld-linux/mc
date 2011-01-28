@@ -39,7 +39,6 @@ Patch6:		%{name}-no-ws-visible.patch
 Patch11:	%{name}-noperl-vfs.patch
 # at now syntax highligthing for PLD-update-TODO and CVSROOT/users
 Patch12:	%{name}-pld-developerfriendly.patch
-Patch24:	%{name}-find_options.patch
 URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -171,9 +170,6 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 %patch6 -p1
 %{!?with_perl_vfs:%patch11 -p1}
 %patch12 -p1
-%if "%{pld_release}" == "ti"
-%patch24 -p1
-%endif
 
 rm -f po/stamp-po
 
