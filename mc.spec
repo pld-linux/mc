@@ -21,7 +21,7 @@ Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
 Version:	4.7.5.2
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Shells
@@ -171,7 +171,7 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 %{!?with_perl_vfs:%patch11 -p1}
 %patch12 -p1
 
-rm -f po/stamp-po
+%{__rm} po/stamp-po
 
 sed -i 's:|hxx|:|hh|hpp|hxx|tcc|:' misc/syntax/Syntax
 
@@ -216,6 +216,11 @@ for a in es pl ; do
 done
 
 install contrib/{mc.sh,mc.csh} $RPM_BUILD_ROOT/etc/shrc.d
+
+%{__rm} $RPM_BUILD_ROOT%{_mandir}/*/man8/mcserv.8
+# fi_FI is currently (i.e. in 4.7.5.2) more complete
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/fi
+mv -f $RPM_BUILD_ROOT%{_datadir}/locale/{fi_FI,fi}
 
 %find_lang %{name}
 
