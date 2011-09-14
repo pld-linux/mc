@@ -20,25 +20,24 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.7.5.3
+Version:	4.7.5.4
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Shells
 Source0:	http://www.midnight-commander.org/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	6a67e139e0032d8a871455a80d490941
+# Source0-md5:	1e53e27fb3bed21c9042689d5777b5aa
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
 Source8:	%{name}.png
 Patch0:		%{name}-rpmfs.patch
-Patch1:		slang-8bit_xterm.patch
-Patch4:		%{name}-home_etc2.patch
-Patch5:		%{name}-pl.patch
-Patch6:		%{name}-no-ws-visible.patch
-Patch11:	%{name}-noperl-vfs.patch
+Patch1:		%{name}-home_etc2.patch
+Patch2:		%{name}-pl.patch
+Patch3:		%{name}-no-ws-visible.patch
+Patch4:		%{name}-noperl-vfs.patch
 # at now syntax highligthing for PLD-update-TODO and CVSROOT/users
-Patch12:	%{name}-pld-developerfriendly.patch
+Patch5:		%{name}-pld-developerfriendly.patch
 URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -162,18 +161,17 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 %setup -q -a3
 #rpm wrapper rewritten
 #%patch0 -p1
-%patch1 -p1
 # doesn't apply
-#%patch4 -p1
+#%patch1 -p1
 # doesn't apply
-#%patch5 -p1
-%patch6 -p1
-%{!?with_perl_vfs:%patch11 -p1}
-%patch12 -p1
+#%patch2 -p1
+%patch3 -p1
+%{!?with_perl_vfs:%patch4 -p1}
+%patch5 -p1
 
 %{__rm} po/stamp-po
 
-sed -i 's:|hxx|:|hh|hpp|hxx|tcc|:' misc/syntax/Syntax
+%{__sed} -i 's:|hxx|:|hh|hpp|hxx|tcc|:' misc/syntax/Syntax
 
 %build
 %{__gettextize}
