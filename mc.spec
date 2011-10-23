@@ -23,7 +23,7 @@ Name:		mc
 Version:	4.8.0
 Release:	1
 Epoch:		1
-License:	GPL v2+
+License:	GPL v3+
 Group:		Applications/Shells
 Source0:	http://www.midnight-commander.org/downloads/%{name}-%{version}.tar.bz2
 # Source0-md5:	592478c3edfa2ad64c8cd165b9bec446
