@@ -20,13 +20,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.7.5.5
+Version:	4.8.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Shells
 Source0:	http://www.midnight-commander.org/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	ef1582651115ca8aa52f8d11e99f7da3
+# Source0-md5:	592478c3edfa2ad64c8cd165b9bec446
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
@@ -49,6 +49,7 @@ BuildRequires:	gpm-devel
 %endif
 BuildRequires:	libtool
 BuildRequires:	pam-devel
+BuildRequires:	pcre-devel
 # Needed? %%{?with_perl_vfs:Requires:	perl-base}
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
@@ -188,6 +189,7 @@ export X11_WWW="xdg-open"
 	--with-smb-codepagedir=/etc/samba/codepages \
 	--with%{!?with_x:out}-x \
 	--with-gpm-mouse \
+	--with-pcre \
 	--with-screen=slang \
 	--disable-silent-rules
 
@@ -232,7 +234,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc NEWS README
+%doc NEWS README doc/keybind-migration.txt
 %config /etc/shrc.d/*
 %attr(755,root,root) %{_bindir}/mc*
 %dir %{_libdir}/mc
@@ -280,9 +282,12 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 %attr(755,root,root) %{_libdir}/mc/extfs.d/audio
 %attr(755,root,root) %{_libdir}/mc/extfs.d/bpp
+%attr(755,root,root) %{_libdir}/mc/extfs.d/changesetfs
+%attr(755,root,root) %{_libdir}/mc/extfs.d/gitfs+
 %attr(755,root,root) %{_libdir}/mc/extfs.d/hp48+
 %attr(755,root,root) %{_libdir}/mc/extfs.d/iso9660
 %attr(755,root,root) %{_libdir}/mc/extfs.d/lslR
+%attr(755,root,root) %{_libdir}/mc/extfs.d/patchsetfs
 %attr(755,root,root) %{_libdir}/mc/extfs.d/rpm
 %attr(755,root,root) %{_libdir}/mc/extfs.d/s3+
 %attr(755,root,root) %{_libdir}/mc/extfs.d/trpm
