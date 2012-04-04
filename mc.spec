@@ -33,16 +33,15 @@ Source7:	%{name}.desktop
 Source8:	%{name}.png
 Patch0:		%{name}-rpmfs.patch
 Patch1:		%{name}-home_etc2.patch
-Patch2:		%{name}-pl.patch
-Patch3:		%{name}-no-ws-visible.patch
-Patch4:		%{name}-noperl-vfs.patch
+Patch2:		%{name}-no-ws-visible.patch
+Patch3:		%{name}-noperl-vfs.patch
 # at now syntax highligthing for PLD-update-TODO and CVSROOT/users
-Patch5:		%{name}-pld-developerfriendly.patch
+Patch4:		%{name}-pld-developerfriendly.patch
 URL:		http://www.midnight-commander.org/
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.60
+BuildRequires:	automake >= 1.5
 %{?with_ext2undel:BuildRequires:	e2fsprogs-devel}
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-devel >= 0.14.3
 BuildRequires:	glib2-devel >= 2.8
 %ifnarch s390 s390x
 BuildRequires:	gpm-devel
@@ -50,7 +49,6 @@ BuildRequires:	gpm-devel
 BuildRequires:	libtool
 BuildRequires:	pam-devel
 BuildRequires:	pcre-devel
-# Needed? %%{?with_perl_vfs:Requires:	perl-base}
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.268
@@ -160,15 +158,12 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 
 %prep
 %setup -q -a3
-#rpm wrapper rewritten
-#%patch0 -p1
-# doesn't apply
+%patch0 -p1
+# doesn't apply, makes no sense (now mc complies to XDG by default)
 #%patch1 -p1
-# doesn't apply
-#%patch2 -p1
-%patch3 -p1
-%{!?with_perl_vfs:%patch4 -p1}
-%patch5 -p1
+%patch2 -p1
+%{!?with_perl_vfs:%patch3 -p1}
+%patch4 -p1
 
 %{__rm} po/stamp-po
 

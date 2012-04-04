@@ -1,93 +1,62 @@
---- mc-4.7.0-pre2/vfs/extfs/rpm.org	2009-06-15 23:18:22.000000000 +0200
-+++ mc-4.7.0-pre2/vfs/extfs/rpm	2009-09-06 18:33:26.968564752 +0200
-@@ -50,7 +50,11 @@
-     echo "-r-xr-xr-x   1 root     root    39 $DATE INSTALL"
-     echo "-r-xr-xr-x   1 root     root    39 $DATE UPGRADE"
-     echo "dr-xr-xr-x   3 root     root	   0 $DATE INFO"
--    echo "$FILEPREF 0 $DATE INFO/NAME-VERSION-RELEASE"
-+    if [ "`$RPM -qp --qf \"%{EPOCH}\" \"$1\"`" = "(none)" ]; then
-+	    echo "$FILEPREF 0 $DATE INFO/NAME-VERSION-RELEASE"
-+    else
+--- mc-4.8.2/src/vfs/extfs/helpers/rpm.orig	2011-11-27 15:11:03.000000000 +0100
++++ mc-4.8.2/src/vfs/extfs/helpers/rpm	2012-04-04 18:22:09.406582171 +0200
+@@ -164,12 +164,19 @@
+     mcrpmfs_printOneMetaInfo "INFO/DESCRIPTION" "DESCRIPTION"
+     mcrpmfs_printOneMetaInfo "INFO/SUMMARY" "SUMMARY"
+ 
+-    if test "`mcrpmfs_getRawOneTag \"%{RPMTAG_PREIN}%{RPMTAG_POSTIN}%{RPMTAG_PREUN}%{RPMTAG_POSTUN}%{VERIFYSCRIPT}\"`" != "(none)(none)(none)(none)(none)"; then
++    if test "`mcrpmfs_getRawOneTag \"%{RPMTAG_PREINPROG}%{RPMTAG_POSTINPROG}%{RPMTAG_PREUNPROG}%{RPMTAG_POSTUNPROG}%{VERIFYSCRIPTPROG}%{TRIGGERSCRIPTPROG}\"`" != "(none)(none)(none)(none)(none)(none)"; then
+ 	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/PREIN" "RPMTAG_PREIN" "raw"
++	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/PREINPROG" "RPMTAG_PREINPROG" "raw"
+ 	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/POSTIN" "RPMTAG_POSTIN" "raw"
++	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/POSTINPROG" "RPMTAG_POSTINPROG" "raw"
+ 	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/PREUN" "RPMTAG_PREUN" "raw"
++	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/PREUNPROG" "RPMTAG_PREUNPROG" "raw"
+ 	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/POSTUN" "RPMTAG_POSTUN" "raw"
++	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/POSTUNPROG" "RPMTAG_POSTUNPROG" "raw"
+ 	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/VERIFYSCRIPT" "VERIFYSCRIPT" "raw"
++	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/VERIFYSCRIPTPROG" "VERIFYSCRIPTPROG" "raw"
++	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/TRIGGERSCRIPTS" "TRIGGERSCRIPTS" "raw"
++	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/TRIGGERSCRIPTPROG" "TRIGGERSCRIPTPROG" "raw"
+ 	echo "$FILEPREF 0 $DATE INFO/SCRIPTS/ALL"
+     fi
+ 
+@@ -215,6 +222,9 @@
+ 
+     echo "dr-xr-xr-x   3 root     root     0 $DATE INFO"
+     echo "$FILEPREF 0 $DATE INFO/NAME-VERSION-RELEASE"
++    if [ "`mcrpmfs_getOneTag EPOCH`" != "(none)" ]; then
 +	    echo "$FILEPREF 0 $DATE INFO/NAME-EPOCH:VERSION-RELEASE"
 +    fi
      echo "$FILEPREF 0 $DATE INFO/GROUP"
      echo "$FILEPREF 0 $DATE INFO/BUILDHOST"
      echo "$FILEPREF 0 $DATE INFO/SOURCERPM"
-@@ -63,18 +67,32 @@
-          echo "$FILEPREF 0 $DATE INFO/DESCRIPTION"
-      test "`$RPM -qp --qf \"%{SUMMARY}\" \"$f\"`" = "(none)" ||
-          echo "$FILEPREF 0 $DATE INFO/SUMMARY"
--     if test "`$RPM -qp --qf \"%{RPMTAG_PREIN}%{RPMTAG_POSTIN}%{RPMTAG_PREUN}%{RPMTAG_POSTUN}%{VERIFYSCRIPT}\" \"$f\"`" != "(none)(none)(none)(none)(none)"; then
-+     if test "`$RPM -qp --qf \"%{RPMTAG_PREINPROG}%{RPMTAG_POSTINPROG}%{RPMTAG_PREUNPROG}%{RPMTAG_POSTUNPROG}%{VERIFYSCRIPTPROG}%{TRIGGERSCRIPTPROG}\" \"$1\"`" != "(none)(none)(none)(none)(none)"; then
- 	echo "dr-xr-xr-x   1 root     root     0 $DATE INFO/SCRIPTS"
- 	test "`$RPM -qp --qf \"%{RPMTAG_PREIN}\" \"$f\"`" = '(none)' ||
- 	   echo "$FILEPREF 0 $DATE INFO/SCRIPTS/PREIN"
-+	test "`$RPM -qp --qf \"%{RPMTAG_PREINPROG}\" \"$1\"`" = '(none)' ||
-+	   echo "$FILEPREF 0 $DATE INFO/SCRIPTS/PREINPROG"
- 	test "`$RPM -qp --qf \"%{RPMTAG_POSTIN}\" \"$f\"`" = '(none)' ||
- 	   echo "$FILEPREF 0 $DATE INFO/SCRIPTS/POSTIN"
-+	test "`$RPM -qp --qf \"%{RPMTAG_POSTINPROG}\" \"$1\"`" = '(none)' ||
-+	   echo "$FILEPREF 0 $DATE INFO/SCRIPTS/POSTINPROG"
- 	test "`$RPM -qp --qf \"%{RPMTAG_PREUN}\" \"$f\"`" = '(none)' ||
- 	   echo "$FILEPREF 0 $DATE INFO/SCRIPTS/PREUN"
-+	test "`$RPM -qp --qf \"%{RPMTAG_PREUNPROG}\" \"$1\"`" = '(none)' ||
-+	   echo "$FILEPREF 0 $DATE INFO/SCRIPTS/PREUNPROG"
- 	test "`$RPM -qp --qf \"%{RPMTAG_POSTUN}\" \"$f\"`" = '(none)' ||
- 	   echo "$FILEPREF 0 $DATE INFO/SCRIPTS/POSTUN"
-+	test "`$RPM -qp --qf \"%{RPMTAG_POSTUNPROG}\" \"$1\"`" = '(none)' ||
-+	   echo "$FILEPREF 0 $DATE INFO/SCRIPTS/POSTUNPROG"
- 	test "`$RPM -qp --qf \"%{VERIFYSCRIPT}\" \"$f\"`" = '(none)' ||
- 	   echo "$FILEPREF 0 $DATE INFO/SCRIPTS/VERIFYSCRIPT"
-+	test "`$RPM -qp --qf \"%{VERIFYSCRIPTPROG}\" \"$1\"`" = '(none)' ||
-+	   echo "$FILEPREF 0 $DATE INFO/SCRIPTS/VERIFYSCRIPTPROG"
-+	test "`$RPM -qp --qf \"%{TRIGGERSCRIPTS}\" \"$1\"`" = '(none)' ||
-+	   echo "$FILEPREF 0 $DATE INFO/SCRIPTS/TRIGGERSCRIPTS"
-+	test "`$RPM -qp --qf \"%{TRIGGERSCRIPTPROG}\" \"$1\"`" = '(none)' ||
-+	   echo "$FILEPREF 0 $DATE INFO/SCRIPTS/TRIGGERSCRIPTPROG"
-         echo "$FILEPREF 0 $DATE INFO/SCRIPTS/ALL"
-      fi
-     else
-@@ -84,10 +102,17 @@
-      echo "$FILEPREF 0 $DATE INFO/SUMMARY"
-      echo "dr-xr-xr-x   1 root     root     0 $DATE INFO/SCRIPTS"
-      echo "$FILEPREF 0 $DATE INFO/SCRIPTS/PREIN"
-+     echo "$FILEPREF 0 $DATE INFO/SCRIPTS/PREINPROG"
-      echo "$FILEPREF 0 $DATE INFO/SCRIPTS/POSTIN"
-+     echo "$FILEPREF 0 $DATE INFO/SCRIPTS/POSTINPROG"
-      echo "$FILEPREF 0 $DATE INFO/SCRIPTS/PREUN"
-+     echo "$FILEPREF 0 $DATE INFO/SCRIPTS/PREUNPROG"
-      echo "$FILEPREF 0 $DATE INFO/SCRIPTS/POSTUN"
-+     echo "$FILEPREF 0 $DATE INFO/SCRIPTS/POSTUNPROG"
-      echo "$FILEPREF 0 $DATE INFO/SCRIPTS/VERIFYSCRIPT"
-+     echo "$FILEPREF 0 $DATE INFO/SCRIPTS/VERIFYSCRIPTPROG"
-+     echo "$FILEPREF 0 $DATE INFO/SCRIPTS/TRIGGERSCRIPTS"
-+     echo "$FILEPREF 0 $DATE INFO/SCRIPTS/TRIGGERSCRIPTPROG"
-      echo "$FILEPREF 0 $DATE INFO/SCRIPTS/ALL"
-     fi
-     if test "$MCFASTRPM" = 0 ; then
-@@ -140,6 +165,7 @@
- 	UPGRADE) echo "# Run this to upgrade this RPM package" > "$3"; exit 0;;
- 	ERROR) $RPM -qip "$f" > /dev/null 2> "$3"; exit 0;;
- 	INFO/NAME-VERSION-RELEASE)	$RPM -qp --qf "%{NAME}-%{VERSION}-%{RELEASE}\n" "$f" > "$3"; exit 0;;
-+	INFO/NAME-EPOCH:VERSION-RELEASE) $RPM -qp --qf "%{NAME}-%{EPOCH}:%{VERSION}-%{RELEASE}\n" "$1" > "$3"; exit 0;;
- 	INFO/RELEASE)		$RPM -qp --qf "%{RELEASE}\n" "$f" > "$3"; exit 0;;
- 	INFO/GROUP)		$RPM -qp --qf "%{GROUP}\n" "$f" > "$3"; exit 0;;
- 	INFO/DISTRIBUTION) 	$RPM -qp --qf "%{DISTRIBUTION}\n" "$f" > "$3"; exit 0;;
-@@ -156,10 +182,17 @@
- 	INFO/REQUIRENAME)	$RPM -qp --qf "[%{REQUIRENAME} %{REQUIREFLAGS:depflags} %{REQUIREVERSION}\n]" "$f" >"$3"; exit 0;;
- 	INFO/PROVIDES)		$RPM -qp --qf "[%{PROVIDES}\n]" "$f" >"$3"; exit 0;;
- 	INFO/SCRIPTS/PREIN)	$RPM -qp --qf "%{RPMTAG_PREIN}\n" "$f" >"$3"; exit 0;;
-+	INFO/SCRIPTS/PREINPROG) $RPM -qp --qf "%{RPMTAG_PREINPROG}\n" "$1" >"$3"; exit 0;;
- 	INFO/SCRIPTS/POSTIN)	$RPM -qp --qf "%{RPMTAG_POSTIN}\n" "$f" >"$3"; exit 0;;
-+	INFO/SCRIPTS/POSTINPROG)        $RPM -qp --qf "%{RPMTAG_POSTINPROG}\n" "$1" >"$3"; exit 0;;
- 	INFO/SCRIPTS/PREUN)	$RPM -qp --qf "%{RPMTAG_PREUN}\n" "$f" >"$3"; exit 0;;
-+	INFO/SCRIPTS/PREUNPROG) $RPM -qp --qf "%{RPMTAG_PREUNPROG}\n" "$1" >"$3"; exit 0;;
- 	INFO/SCRIPTS/POSTUN)	$RPM -qp --qf "%{RPMTAG_POSTUN}\n" "$f" >"$3"; exit 0;;
-+	INFO/SCRIPTS/POSTUNPROG)        $RPM -qp --qf "%{RPMTAG_POSTUNPROG}\n" "$1" >"$3"; exit 0;;
- 	INFO/SCRIPTS/VERIFYSCRIPT)	$RPM -qp --qf "%{VERIFYSCRIPT}\n" "$f" >"$3"; exit 0;;
-+	INFO/SCRIPTS/VERIFYSCRIPTPROG)  $RPM -qp --qf "%{VERIFYSCRIPTPROG}\n" "$1" >"$3"; exit 0;;
-+	INFO/SCRIPTS/TRIGGERSCRIPTS)    $RPM -qp --triggers "$1" > "$3"; exit 0;;
-+	INFO/SCRIPTS/TRIGGERSCRIPTPROG) $RPM -qp --qf "%{TRIGGERSCRIPTPROG}\n" "$1" > "$3"; exit 0;;
- 	INFO/SCRIPTS/ALL)		$RPM -qp --scripts "$f" > "$3"; exit 0;;
- 	INFO/SUMMARY)		$RPM -qp --qf "%{SUMMARY}\n" "$f" > "$3"; exit 0;;
- 	INFO/OS)		$RPM -qp --qf "%{OS}\n" "$f" > "$3"; exit 0;;
+@@ -256,6 +266,10 @@
+ 	    echo `mcrpmfs_getOneTag "NAME"`-`mcrpmfs_getOneTag "VERSION"`-`mcrpmfs_getOneTag "RELEASE"` > "$2"
+ 	    exit 0
+ 	;;
++	INFO/NAME-EPOCH:VERSION-RELEASE)
++	    echo `mcrpmfs_getOneTag "NAME"`-`mcrpmfs_getOneTag "EPOCH"`:`mcrpmfs_getOneTag "VERSION"`-`mcrpmfs_getOneTag "RELEASE"` > "$2"
++	    exit 0
++	;;
+ 	INFO/RELEASE)		mcrpmfs_getOneTag "RELEASE" > "$2"; exit 0;;
+ 	INFO/GROUP)		mcrpmfs_getRawOneTag "%{GROUP}\n" > "$2"; exit 0;;
+ 	INFO/DISTRIBUTION) 	mcrpmfs_getOneTag "DISTRIBUTION" > "$2"; exit 0;;
+@@ -272,10 +286,17 @@
+ 	INFO/REQUIRENAME)	mcrpmfs_getRawOneTag "[%{REQUIRENAME} %{REQUIREFLAGS:depflags} %{REQUIREVERSION}\n]" >"$2"; exit 0;;
+ 	INFO/PROVIDES)		mcrpmfs_getRawOneTag "[%{PROVIDES}\n]" >"$2"; exit 0;;
+ 	INFO/SCRIPTS/PREIN)	mcrpmfs_getRawOneTag "%{RPMTAG_PREIN}\n" >"$2"; exit 0;;
++	INFO/SCRIPTS/PREINPROG)	mcrpmfs_getRawOneTag "%{RPMTAG_PREINPROG}\n" >"$2"; exit 0;;
+ 	INFO/SCRIPTS/POSTIN)	mcrpmfs_getRawOneTag "%{RPMTAG_POSTIN}\n" >"$2"; exit 0;;
++	INFO/SCRIPTS/POSTINPROG)	mcrpmfs_getRawOneTag "%{RPMTAG_POSTINPROG}\n" >"$2"; exit 0;;
+ 	INFO/SCRIPTS/PREUN)	mcrpmfs_getRawOneTag "%{RPMTAG_PREUN}\n" >"$2"; exit 0;;
++	INFO/SCRIPTS/PREUNPROG)	mcrpmfs_getRawOneTag "%{RPMTAG_PREUNPROG}\n" >"$2"; exit 0;;
+ 	INFO/SCRIPTS/POSTUN)	mcrpmfs_getRawOneTag "%{RPMTAG_POSTUN}\n" >"$2"; exit 0;;
++	INFO/SCRIPTS/POSTUNPROG)	mcrpmfs_getRawOneTag "%{RPMTAG_POSTUNPROG}\n" >"$2"; exit 0;;
+ 	INFO/SCRIPTS/VERIFYSCRIPT)	mcrpmfs_getRawOneTag "%{VERIFYSCRIPT}\n" > "$2"; exit 0;;
++	INFO/SCRIPTS/VERIFYSCRIPTPROG)	mcrpmfs_getRawOneTag "%{VERIFYSCRIPTPROG}\n" > "$2"; exit 0;;
++	INFO/SCRIPTS/TRIGGERSCRIPTS)	mcrpmfs_getRawOneTag "%{TRIGGERSCRIPTS}\n" > "$2"; exit 0;;
++	INFO/SCRIPTS/TRIGGERSCRIPTPROG)	mcrpmfs_getRawOneTag "%{TRIGGERSCRIPTPROG}\n" > "$2"; exit 0;;
+ 	INFO/SCRIPTS/ALL)		$RPM -qp --scripts "`echo ${rpm_filename}| $SED "${SEDCMD}"`" > "$2"; exit 0;;
+ 	INFO/SUMMARY)		mcrpmfs_getRawOneTag "%{SUMMARY}\n" > "$2"; exit 0;;
+ 	INFO/OS)		mcrpmfs_getRawOneTag "%{OS}\n" > "$2"; exit 0;;
