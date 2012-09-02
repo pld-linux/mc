@@ -20,13 +20,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.8.3
-Release:	2
+Version:	4.8.4
+Release:	1
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
 Source0:	http://www.midnight-commander.org/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	12d38ad4969df3f8bbf66c3967a191ee
+# Source0-md5:	a8edb8226cb25869f925ecce043faf1e
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
@@ -37,7 +37,6 @@ Patch2:		%{name}-no-ws-visible.patch
 Patch3:		%{name}-noperl-vfs.patch
 # at now syntax highligthing for PLD-update-TODO and CVSROOT/users
 Patch4:		%{name}-pld-developerfriendly.patch
-Patch5:		bug-2785.patch
 URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1.5
@@ -165,7 +164,6 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 %patch2 -p1
 %{!?with_perl_vfs:%patch3 -p1}
 %patch4 -p1
-%patch5 -p0
 
 %{__rm} po/stamp-po
 
@@ -265,6 +263,17 @@ rm -rf $RPM_BUILD_ROOT
 %lang(uk) %{_datadir}/mc/hints/mc.hint.uk
 %lang(zh) %{_datadir}/mc/hints/mc.hint.zh
 
+%dir %{_libdir}/mc/ext.d
+%attr(755,root,root) %{_libdir}/mc/ext.d/archive.sh
+%attr(755,root,root) %{_libdir}/mc/ext.d/doc.sh
+%attr(755,root,root) %{_libdir}/mc/ext.d/image.sh
+%attr(755,root,root) %{_libdir}/mc/ext.d/misc.sh
+%attr(755,root,root) %{_libdir}/mc/ext.d/package.sh
+%attr(755,root,root) %{_libdir}/mc/ext.d/sound.sh
+%attr(755,root,root) %{_libdir}/mc/ext.d/text.sh
+%attr(755,root,root) %{_libdir}/mc/ext.d/video.sh
+%attr(755,root,root) %{_libdir}/mc/ext.d/web.sh
+
 %dir %{_libdir}/mc/extfs.d
 %{_libdir}/mc/extfs.d/README*
 %if %{with perl_vfs}
@@ -275,6 +284,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/mc/extfs.d/mailfs
 %attr(755,root,root) %{_libdir}/mc/extfs.d/patchfs
 %attr(755,root,root) %{_libdir}/mc/extfs.d/rpms+
+%attr(755,root,root) %{_libdir}/mc/extfs.d/ulib
 %attr(755,root,root) %{_libdir}/mc/extfs.d/uzip
 %endif
 %attr(755,root,root) %{_libdir}/mc/extfs.d/audio
