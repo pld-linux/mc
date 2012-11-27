@@ -57,6 +57,6 @@
 +	INFO/SCRIPTS/VERIFYSCRIPTPROG)	mcrpmfs_getRawOneTag "%{VERIFYSCRIPTPROG}\n" > "$2"; exit 0;;
 +	INFO/SCRIPTS/TRIGGERSCRIPTS)	mcrpmfs_getRawOneTag "%{TRIGGERSCRIPTS}\n" > "$2"; exit 0;;
 +	INFO/SCRIPTS/TRIGGERSCRIPTPROG)	mcrpmfs_getRawOneTag "%{TRIGGERSCRIPTPROG}\n" > "$2"; exit 0;;
- 	INFO/SCRIPTS/ALL)		$RPM -qp --scripts "`echo ${rpm_filename}| $SED "${SEDCMD}"`" > "$2"; exit 0;;
+ 	INFO/SCRIPTS/ALL)		$RPM -qp --scripts "${rpm_filename}" > "$2"; exit 0;;
  	INFO/SUMMARY)		mcrpmfs_getRawOneTag "%{SUMMARY}\n" > "$2"; exit 0;;
  	INFO/OS)		mcrpmfs_getRawOneTag "%{OS}\n" > "$2"; exit 0;;

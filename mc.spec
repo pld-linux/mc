@@ -20,13 +20,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.8.4
+Version:	4.8.6
 Release:	1
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
 Source0:	http://www.midnight-commander.org/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	a8edb8226cb25869f925ecce043faf1e
+# Source0-md5:	323706aa5e77698bed7b0b6faa7c1530
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
