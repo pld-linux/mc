@@ -50,9 +50,9 @@ diff -urN mc-2006-02-24-22.org/syntax/pld-update-todo.syntax mc-2006-02-24-22/sy
 +	keyword wholeleft	[NEW]\s*\n	green
 +	keyword wholeright	(*)	white black
 +
-diff -urN mc-2006-02-24-22.org/syntax/Syntax mc-2006-02-24-22/syntax/Syntax
---- mc-2006-02-24-22.org/misc/syntax/Syntax	2005-10-31 22:15:34.000000000 +0100
-+++ mc-2006-02-24-22/misc/syntax/Syntax	2006-02-28 17:37:11.805898250 +0100
+diff -urN mc-2006-02-24-22.org/syntax/Syntax.in mc-2006-02-24-22/syntax/Syntax.in
+--- mc-2006-02-24-22.org/misc/syntax/Syntax.in	2005-10-31 22:15:34.000000000 +0100
++++ mc-2006-02-24-22/misc/syntax/Syntax.in	2006-02-28 17:37:11.805898250 +0100
 @@ -145,5 +145,11 @@
  file Don_t_match_me Mail\sfolder ^From\s
  include mail.syntax
