@@ -20,13 +20,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.8.7
+Version:	4.8.8
 Release:	1
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
-Source0:	http://www.midnight-commander.org/downloads/%{name}-%{version}.tar.xz
-# Source0-md5:	3e825e767f85a57af210919f9f6c90b2
+Source0:	http://ftp.midnight-commander.org/%{name}-%{version}.tar.xz
+# Source0-md5:	14231665535fc80cc654b6ccfd070995
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
@@ -252,16 +252,48 @@ rm -rf $RPM_BUILD_ROOT
 %lang(sr) %{_datadir}/mc/help/mc.hlp.sr
 %dir %{_datadir}/mc/hints
 %{_datadir}/mc/hints/mc.hint
+%lang(az) %{_datadir}/mc/hints/mc.hint.az
+%lang(be) %{_datadir}/mc/hints/mc.hint.be
+%lang(bg) %{_datadir}/mc/hints/mc.hint.bg
+%lang(ca) %{_datadir}/mc/hints/mc.hint.ca
 %lang(cs) %{_datadir}/mc/hints/mc.hint.cs
+%lang(da) %{_datadir}/mc/hints/mc.hint.da
+%lang(de) %{_datadir}/mc/hints/mc.hint.de
+%lang(de_CH) %{_datadir}/mc/hints/mc.hint.de_CH
+%lang(el) %{_datadir}/mc/hints/mc.hint.el
+%lang(eo) %{_datadir}/mc/hints/mc.hint.eo
 %lang(es) %{_datadir}/mc/hints/mc.hint.es
+%lang(eu) %{_datadir}/mc/hints/mc.hint.eu
+%lang(fa) %{_datadir}/mc/hints/mc.hint.fa
+%lang(fi) %{_datadir}/mc/hints/mc.hint.fi
+%lang(fi_FI) %{_datadir}/mc/hints/mc.hint.fi_FI
+%lang(fr) %{_datadir}/mc/hints/mc.hint.fr
+%lang(gl) %{_datadir}/mc/hints/mc.hint.gl
+%lang(hr) %{_datadir}/mc/hints/mc.hint.hr
 %lang(hu) %{_datadir}/mc/hints/mc.hint.hu
+%lang(ia) %{_datadir}/mc/hints/mc.hint.ia
+%lang(id) %{_datadir}/mc/hints/mc.hint.id
 %lang(it) %{_datadir}/mc/hints/mc.hint.it
+%lang(it_IT) %{_datadir}/mc/hints/mc.hint.it_IT
+%lang(ja) %{_datadir}/mc/hints/mc.hint.ja
+%lang(ka) %{_datadir}/mc/hints/mc.hint.ka
+%lang(ko) %{_datadir}/mc/hints/mc.hint.ko
+%lang(lt) %{_datadir}/mc/hints/mc.hint.lt
 %lang(nl) %{_datadir}/mc/hints/mc.hint.nl
 %lang(pl) %{_datadir}/mc/hints/mc.hint.pl
+%lang(pt) %{_datadir}/mc/hints/mc.hint.pt
+%lang(pt_BR) %{_datadir}/mc/hints/mc.hint.pt_BR
+%lang(ro) %{_datadir}/mc/hints/mc.hint.ro
 %lang(ru) %{_datadir}/mc/hints/mc.hint.ru
+%lang(sk) %{_datadir}/mc/hints/mc.hint.sk
+%lang(sl) %{_datadir}/mc/hints/mc.hint.sl
 %lang(sr) %{_datadir}/mc/hints/mc.hint.sr
+%lang(sv) %{_datadir}/mc/hints/mc.hint.sv
+%lang(sv_SE) %{_datadir}/mc/hints/mc.hint.sv_SE
+%lang(tr) %{_datadir}/mc/hints/mc.hint.tr
 %lang(uk) %{_datadir}/mc/hints/mc.hint.uk
 %lang(zh) %{_datadir}/mc/hints/mc.hint.zh
+%lang(zh_CN) %{_datadir}/mc/hints/mc.hint.zh_CN
 
 %dir %{_libdir}/mc/ext.d
 %attr(755,root,root) %{_libdir}/mc/ext.d/archive.sh
