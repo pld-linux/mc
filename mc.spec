@@ -266,7 +266,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(eu) %{_datadir}/mc/hints/mc.hint.eu
 %lang(fa) %{_datadir}/mc/hints/mc.hint.fa
 %lang(fi) %{_datadir}/mc/hints/mc.hint.fi
-%lang(fi_FI) %{_datadir}/mc/hints/mc.hint.fi_FI
+%lang(fi) %{_datadir}/mc/hints/mc.hint.fi_FI
 %lang(fr) %{_datadir}/mc/hints/mc.hint.fr
 %lang(gl) %{_datadir}/mc/hints/mc.hint.gl
 %lang(hr) %{_datadir}/mc/hints/mc.hint.hr
@@ -274,7 +274,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(ia) %{_datadir}/mc/hints/mc.hint.ia
 %lang(id) %{_datadir}/mc/hints/mc.hint.id
 %lang(it) %{_datadir}/mc/hints/mc.hint.it
-%lang(it_IT) %{_datadir}/mc/hints/mc.hint.it_IT
+%lang(it) %{_datadir}/mc/hints/mc.hint.it_IT
 %lang(ja) %{_datadir}/mc/hints/mc.hint.ja
 %lang(ka) %{_datadir}/mc/hints/mc.hint.ka
 %lang(ko) %{_datadir}/mc/hints/mc.hint.ko
@@ -289,7 +289,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(sl) %{_datadir}/mc/hints/mc.hint.sl
 %lang(sr) %{_datadir}/mc/hints/mc.hint.sr
 %lang(sv) %{_datadir}/mc/hints/mc.hint.sv
-%lang(sv_SE) %{_datadir}/mc/hints/mc.hint.sv_SE
+%lang(sv) %{_datadir}/mc/hints/mc.hint.sv_SE
 %lang(tr) %{_datadir}/mc/hints/mc.hint.tr
 %lang(uk) %{_datadir}/mc/hints/mc.hint.uk
 %lang(zh) %{_datadir}/mc/hints/mc.hint.zh
@@ -346,7 +346,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/mc.desktop
 %{_pixmapsdir}/mc.png
 
-%{_mandir}/man1/*
+%{_mandir}/man1/mc.1*
+%{_mandir}/man1/mcedit.1*
+%{_mandir}/man1/mcview.1*
 %lang(es) %{_mandir}/es/man1/*
 %lang(hu) %{_mandir}/hu/man1/*
 %lang(it) %{_mandir}/it/man1/*
