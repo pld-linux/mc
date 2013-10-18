@@ -20,13 +20,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.8.8
+Version:	4.8.10
 Release:	1
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
 Source0:	http://ftp.midnight-commander.org/%{name}-%{version}.tar.xz
-# Source0-md5:	14231665535fc80cc654b6ccfd070995
+# Source0-md5:	3d9c3777bb5c6e656792c1ef30f483b4
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
@@ -215,13 +215,6 @@ install contrib/{mc.sh,mc.csh} $RPM_BUILD_ROOT/etc/shrc.d
 
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/*/man8/mcserv.8
 
-# fi_FI is currently (i.e. in 4.7.5.2) more complete
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/fi
-mv -f $RPM_BUILD_ROOT%{_datadir}/locale/{fi_FI,fi}
-
-# unsupported
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/it_IT
-
 %find_lang %{name}
 
 %clean
@@ -266,7 +259,6 @@ rm -rf $RPM_BUILD_ROOT
 %lang(eu) %{_datadir}/mc/hints/mc.hint.eu
 %lang(fa) %{_datadir}/mc/hints/mc.hint.fa
 %lang(fi) %{_datadir}/mc/hints/mc.hint.fi
-%lang(fi) %{_datadir}/mc/hints/mc.hint.fi_FI
 %lang(fr) %{_datadir}/mc/hints/mc.hint.fr
 %lang(gl) %{_datadir}/mc/hints/mc.hint.gl
 %lang(hr) %{_datadir}/mc/hints/mc.hint.hr
@@ -274,7 +266,6 @@ rm -rf $RPM_BUILD_ROOT
 %lang(ia) %{_datadir}/mc/hints/mc.hint.ia
 %lang(id) %{_datadir}/mc/hints/mc.hint.id
 %lang(it) %{_datadir}/mc/hints/mc.hint.it
-%lang(it) %{_datadir}/mc/hints/mc.hint.it_IT
 %lang(ja) %{_datadir}/mc/hints/mc.hint.ja
 %lang(ka) %{_datadir}/mc/hints/mc.hint.ka
 %lang(ko) %{_datadir}/mc/hints/mc.hint.ko
