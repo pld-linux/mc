@@ -1,11 +1,8 @@
 --- mc-4.8.2/src/vfs/extfs/helpers/rpm.orig	2011-11-27 15:11:03.000000000 +0100
 +++ mc-4.8.2/src/vfs/extfs/helpers/rpm	2012-04-04 18:22:09.406582171 +0200
-@@ -164,12 +164,19 @@
-     mcrpmfs_printOneMetaInfo "INFO/DESCRIPTION" "DESCRIPTION"
-     mcrpmfs_printOneMetaInfo "INFO/SUMMARY" "SUMMARY"
+@@ -172,11 +172,17 @@
  
--    if test "`mcrpmfs_getRawOneTag \"%{RPMTAG_PREIN}%{RPMTAG_POSTIN}%{RPMTAG_PREUN}%{RPMTAG_POSTUN}%{VERIFYSCRIPT}\"`" != "(none)(none)(none)(none)(none)"; then
-+    if test "`mcrpmfs_getRawOneTag \"%{RPMTAG_PREINPROG}%{RPMTAG_POSTINPROG}%{RPMTAG_PREUNPROG}%{RPMTAG_POSTUNPROG}%{VERIFYSCRIPTPROG}%{TRIGGERSCRIPTPROG}\"`" != "(none)(none)(none)(none)(none)(none)"; then
+     if test "`mcrpmfs_getRawOneTag \"%{RPMTAG_PREIN}%{RPMTAG_POSTIN}%{RPMTAG_PREUN}%{RPMTAG_POSTUN}%{VERIFYSCRIPT}%{TRIGGERSCRIPTS}\"`" != "(none)(none)(none)(none)(none)(none)"; then
  	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/PREIN" "RPMTAG_PREIN" "raw"
 +	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/PREINPROG" "RPMTAG_PREINPROG" "raw"
  	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/POSTIN" "RPMTAG_POSTIN" "raw"
@@ -16,47 +13,9 @@
 +	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/POSTUNPROG" "RPMTAG_POSTUNPROG" "raw"
  	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/VERIFYSCRIPT" "VERIFYSCRIPT" "raw"
 +	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/VERIFYSCRIPTPROG" "VERIFYSCRIPTPROG" "raw"
-+	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/TRIGGERSCRIPTS" "TRIGGERSCRIPTS" "raw"
+ 	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/TRIGGERSCRIPTS" "TRIGGERSCRIPTS" "raw"
 +	mcrpmfs_printOneMetaInfo "INFO/SCRIPTS/TRIGGERSCRIPTPROG" "TRIGGERSCRIPTPROG" "raw"
  	echo "$FILEPREF 0 $DATE INFO/SCRIPTS/ALL"
      fi
  
-@@ -215,6 +222,9 @@
- 
-     echo "dr-xr-xr-x   3 root     root     0 $DATE INFO"
-     echo "$FILEPREF 0 $DATE INFO/NAME-VERSION-RELEASE"
-+    if [ "`mcrpmfs_getOneTag EPOCH`" != "(none)" ]; then
-+	    echo "$FILEPREF 0 $DATE INFO/NAME-EPOCH:VERSION-RELEASE"
-+    fi
-     echo "$FILEPREF 0 $DATE INFO/GROUP"
-     echo "$FILEPREF 0 $DATE INFO/BUILDHOST"
-     echo "$FILEPREF 0 $DATE INFO/SOURCERPM"
-@@ -256,6 +266,10 @@
- 	    echo `mcrpmfs_getOneTag "NAME"`-`mcrpmfs_getOneTag "VERSION"`-`mcrpmfs_getOneTag "RELEASE"` > "$2"
- 	    exit 0
- 	;;
-+	INFO/NAME-EPOCH:VERSION-RELEASE)
-+	    echo `mcrpmfs_getOneTag "NAME"`-`mcrpmfs_getOneTag "EPOCH"`:`mcrpmfs_getOneTag "VERSION"`-`mcrpmfs_getOneTag "RELEASE"` > "$2"
-+	    exit 0
-+	;;
- 	INFO/RELEASE)		mcrpmfs_getOneTag "RELEASE" > "$2"; exit 0;;
- 	INFO/GROUP)		mcrpmfs_getRawOneTag "%{GROUP}\n" > "$2"; exit 0;;
- 	INFO/DISTRIBUTION) 	mcrpmfs_getOneTag "DISTRIBUTION" > "$2"; exit 0;;
-@@ -272,10 +286,17 @@
- 	INFO/REQUIRENAME)	mcrpmfs_getRawOneTag "[%{REQUIRENAME} %{REQUIREFLAGS:depflags} %{REQUIREVERSION}\n]" >"$2"; exit 0;;
- 	INFO/PROVIDES)		mcrpmfs_getRawOneTag "[%{PROVIDES}\n]" >"$2"; exit 0;;
- 	INFO/SCRIPTS/PREIN)	mcrpmfs_getRawOneTag "%{RPMTAG_PREIN}\n" >"$2"; exit 0;;
-+	INFO/SCRIPTS/PREINPROG)	mcrpmfs_getRawOneTag "%{RPMTAG_PREINPROG}\n" >"$2"; exit 0;;
- 	INFO/SCRIPTS/POSTIN)	mcrpmfs_getRawOneTag "%{RPMTAG_POSTIN}\n" >"$2"; exit 0;;
-+	INFO/SCRIPTS/POSTINPROG)	mcrpmfs_getRawOneTag "%{RPMTAG_POSTINPROG}\n" >"$2"; exit 0;;
- 	INFO/SCRIPTS/PREUN)	mcrpmfs_getRawOneTag "%{RPMTAG_PREUN}\n" >"$2"; exit 0;;
-+	INFO/SCRIPTS/PREUNPROG)	mcrpmfs_getRawOneTag "%{RPMTAG_PREUNPROG}\n" >"$2"; exit 0;;
- 	INFO/SCRIPTS/POSTUN)	mcrpmfs_getRawOneTag "%{RPMTAG_POSTUN}\n" >"$2"; exit 0;;
-+	INFO/SCRIPTS/POSTUNPROG)	mcrpmfs_getRawOneTag "%{RPMTAG_POSTUNPROG}\n" >"$2"; exit 0;;
- 	INFO/SCRIPTS/VERIFYSCRIPT)	mcrpmfs_getRawOneTag "%{VERIFYSCRIPT}\n" > "$2"; exit 0;;
-+	INFO/SCRIPTS/VERIFYSCRIPTPROG)	mcrpmfs_getRawOneTag "%{VERIFYSCRIPTPROG}\n" > "$2"; exit 0;;
-+	INFO/SCRIPTS/TRIGGERSCRIPTS)	mcrpmfs_getRawOneTag "%{TRIGGERSCRIPTS}\n" > "$2"; exit 0;;
-+	INFO/SCRIPTS/TRIGGERSCRIPTPROG)	mcrpmfs_getRawOneTag "%{TRIGGERSCRIPTPROG}\n" > "$2"; exit 0;;
- 	INFO/SCRIPTS/ALL)		$RPM -qp --scripts "${rpm_filename}" > "$2"; exit 0;;
- 	INFO/SUMMARY)		mcrpmfs_getRawOneTag "%{SUMMARY}\n" > "$2"; exit 0;;
- 	INFO/OS)		mcrpmfs_getRawOneTag "%{OS}\n" > "$2"; exit 0;;
+
