@@ -31,7 +31,7 @@ Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
 Source8:	%{name}.png
-Patch0:		%{name}-rpmfs.patch
+
 Patch1:		%{name}-home_etc2.patch
 Patch2:		%{name}-no-ws-visible.patch
 Patch3:		%{name}-noperl-vfs.patch
@@ -158,7 +158,7 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 
 %prep
 %setup -q -a3
-%patch0 -p1
+
 # doesn't apply, makes no sense (now mc complies to XDG by default)
 #%patch1 -p1
 %patch2 -p1
