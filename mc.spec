@@ -1,5 +1,3 @@
-# TODO:
-# - check spec-syntax,mo patches
 #
 # Conditional build:
 %bcond_with	ext2undel	# with ext2 undelete fs
@@ -31,8 +29,6 @@ Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-ma
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
 Source8:	%{name}.png
-
-Patch1:		%{name}-home_etc2.patch
 Patch2:		%{name}-no-ws-visible.patch
 Patch3:		%{name}-noperl-vfs.patch
 # at now syntax highligthing for PLD-update-TODO and CVSROOT/users
@@ -158,9 +154,6 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 
 %prep
 %setup -q -a3
-
-# doesn't apply, makes no sense (now mc complies to XDG by default)
-#%patch1 -p1
 %patch2 -p1
 %{!?with_perl_vfs:%patch3 -p1}
 %patch4 -p1
@@ -256,6 +249,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(el) %{_datadir}/mc/hints/mc.hint.el
 %lang(eo) %{_datadir}/mc/hints/mc.hint.eo
 %lang(es) %{_datadir}/mc/hints/mc.hint.es
+%lang(et) %{_datadir}/mc/hints/mc.hint.et
 %lang(eu) %{_datadir}/mc/hints/mc.hint.eu
 %lang(fa) %{_datadir}/mc/hints/mc.hint.fa
 %lang(fi) %{_datadir}/mc/hints/mc.hint.fi
@@ -268,6 +262,8 @@ rm -rf $RPM_BUILD_ROOT
 %lang(it) %{_datadir}/mc/hints/mc.hint.it
 %lang(ja) %{_datadir}/mc/hints/mc.hint.ja
 %lang(ka) %{_datadir}/mc/hints/mc.hint.ka
+# only English messages inside (as for 4.8.11)
+#%lang(kk) %{_datadir}/mc/hints/mc.hint.kk
 %lang(ko) %{_datadir}/mc/hints/mc.hint.ko
 %lang(lt) %{_datadir}/mc/hints/mc.hint.lt
 %lang(nl) %{_datadir}/mc/hints/mc.hint.nl
@@ -281,6 +277,8 @@ rm -rf $RPM_BUILD_ROOT
 %lang(sr) %{_datadir}/mc/hints/mc.hint.sr
 %lang(sv) %{_datadir}/mc/hints/mc.hint.sv
 %lang(sv) %{_datadir}/mc/hints/mc.hint.sv_SE
+# only English messages inside (as for 4.8.11)
+#%lang(szl) %{_datadir}/mc/hints/mc.hint.szl
 %lang(tr) %{_datadir}/mc/hints/mc.hint.tr
 %lang(uk) %{_datadir}/mc/hints/mc.hint.uk
 %lang(zh) %{_datadir}/mc/hints/mc.hint.zh
