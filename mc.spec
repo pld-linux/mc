@@ -129,8 +129,10 @@ kezelése.
 
 %description -l ja.UTF-8
 Midnight Commander はいろいろな機能を持ったファイルマネージャ兼
-ビジュアルシェルです。これはテキストモードのアプリケーションですが、 GPM を使っている場合、マウスが使えます。 Midnight
-Commander には、 FTP に接続できたり、 tar や zip や RPM の中が見えるなど、クールな機能 があります。
+ビジュアルシェルです。これはテキストモードのアプリケーションですが、
+GPM を使っている場合、マウスが使えます。 Midnight Commander には、 FTP
+に接続できたり、 tar や zip や RPM の中が見えるなど、クールな機能
+があります。
 
 %description -l pl.UTF-8
 Midnight Commander jest wizualną powłoką podobną do Norton Commandera.
@@ -208,6 +210,18 @@ install contrib/{mc.sh,mc.csh} $RPM_BUILD_ROOT/etc/shrc.d
 
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/*/man8/mcserv.8
 
+# just a copy of sv
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/mc/hints/mc.hint.sv_SE
+# another variant of it
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/mc/hints/mc.hint.it_IT
+# enhanced version
+%{__mv} $RPM_BUILD_ROOT%{_datadir}/mc/hints/mc.hint.{zh,zh_CN}
+
+# outdated version of fi
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/fi_FI
+# empty version of sv
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/sv_SE
+
 %find_lang %{name}
 
 %clean
@@ -238,50 +252,55 @@ rm -rf $RPM_BUILD_ROOT
 %lang(sr) %{_datadir}/mc/help/mc.hlp.sr
 %dir %{_datadir}/mc/hints
 %{_datadir}/mc/hints/mc.hint
-%lang(az) %{_datadir}/mc/hints/mc.hint.az
+# only English messages inside (as for 4.8.12)
+#%lang(az) %{_datadir}/mc/hints/mc.hint.az
 %lang(be) %{_datadir}/mc/hints/mc.hint.be
-%lang(bg) %{_datadir}/mc/hints/mc.hint.bg
-%lang(ca) %{_datadir}/mc/hints/mc.hint.ca
+# only English messages inside (as for 4.8.12)
+#%lang(bg) %{_datadir}/mc/hints/mc.hint.bg
+#%lang(ca) %{_datadir}/mc/hints/mc.hint.ca
 %lang(cs) %{_datadir}/mc/hints/mc.hint.cs
-%lang(da) %{_datadir}/mc/hints/mc.hint.da
-%lang(de) %{_datadir}/mc/hints/mc.hint.de
-%lang(de_CH) %{_datadir}/mc/hints/mc.hint.de_CH
+# only English messages inside (as for 4.8.12)
+#%lang(da) %{_datadir}/mc/hints/mc.hint.da
+#%lang(de) %{_datadir}/mc/hints/mc.hint.de
+#%lang(de_CH) %{_datadir}/mc/hints/mc.hint.de_CH
 %lang(el) %{_datadir}/mc/hints/mc.hint.el
+%lang(en_GB) %{_datadir}/mc/hints/mc.hint.en_GB
 %lang(eo) %{_datadir}/mc/hints/mc.hint.eo
 %lang(es) %{_datadir}/mc/hints/mc.hint.es
 %lang(et) %{_datadir}/mc/hints/mc.hint.et
 %lang(eu) %{_datadir}/mc/hints/mc.hint.eu
 %lang(fa) %{_datadir}/mc/hints/mc.hint.fa
-%lang(fi) %{_datadir}/mc/hints/mc.hint.fi
+# only English messages inside (as for 4.8.12)
+#%lang(fi) %{_datadir}/mc/hints/mc.hint.fi
 %lang(fr) %{_datadir}/mc/hints/mc.hint.fr
 %lang(gl) %{_datadir}/mc/hints/mc.hint.gl
-%lang(hr) %{_datadir}/mc/hints/mc.hint.hr
+# only English messages inside (as for 4.8.12)
+#%lang(hr) %{_datadir}/mc/hints/mc.hint.hr
 %lang(hu) %{_datadir}/mc/hints/mc.hint.hu
-%lang(ia) %{_datadir}/mc/hints/mc.hint.ia
+# only English messages inside (as for 4.8.12)
+#%lang(ia) %{_datadir}/mc/hints/mc.hint.ia
 %lang(id) %{_datadir}/mc/hints/mc.hint.id
 %lang(it) %{_datadir}/mc/hints/mc.hint.it
-%lang(ja) %{_datadir}/mc/hints/mc.hint.ja
-%lang(ka) %{_datadir}/mc/hints/mc.hint.ka
-# only English messages inside (as for 4.8.11)
+# only English messages inside (as for 4.8.12)
+#%lang(ja) %{_datadir}/mc/hints/mc.hint.ja
+#%lang(ka) %{_datadir}/mc/hints/mc.hint.ka
 #%lang(kk) %{_datadir}/mc/hints/mc.hint.kk
-%lang(ko) %{_datadir}/mc/hints/mc.hint.ko
-%lang(lt) %{_datadir}/mc/hints/mc.hint.lt
+#%lang(ko) %{_datadir}/mc/hints/mc.hint.ko
+#%lang(lt) %{_datadir}/mc/hints/mc.hint.lt
 %lang(nl) %{_datadir}/mc/hints/mc.hint.nl
 %lang(pl) %{_datadir}/mc/hints/mc.hint.pl
 %lang(pt) %{_datadir}/mc/hints/mc.hint.pt
 %lang(pt_BR) %{_datadir}/mc/hints/mc.hint.pt_BR
 %lang(ro) %{_datadir}/mc/hints/mc.hint.ro
 %lang(ru) %{_datadir}/mc/hints/mc.hint.ru
-%lang(sk) %{_datadir}/mc/hints/mc.hint.sk
-%lang(sl) %{_datadir}/mc/hints/mc.hint.sl
-%lang(sr) %{_datadir}/mc/hints/mc.hint.sr
-%lang(sv) %{_datadir}/mc/hints/mc.hint.sv
-%lang(sv) %{_datadir}/mc/hints/mc.hint.sv_SE
-# only English messages inside (as for 4.8.11)
+# only English messages inside (as for 4.8.12)
+#%lang(sk) %{_datadir}/mc/hints/mc.hint.sk
+#%lang(sl) %{_datadir}/mc/hints/mc.hint.sl
+#%lang(sr) %{_datadir}/mc/hints/mc.hint.sr
+#%lang(sv) %{_datadir}/mc/hints/mc.hint.sv
 #%lang(szl) %{_datadir}/mc/hints/mc.hint.szl
-%lang(tr) %{_datadir}/mc/hints/mc.hint.tr
+#%lang(tr) %{_datadir}/mc/hints/mc.hint.tr
 %lang(uk) %{_datadir}/mc/hints/mc.hint.uk
-%lang(zh) %{_datadir}/mc/hints/mc.hint.zh
 %lang(zh_CN) %{_datadir}/mc/hints/mc.hint.zh_CN
 
 %dir %{_libdir}/mc/ext.d
