@@ -252,14 +252,14 @@ rm -rf $RPM_BUILD_ROOT
 %lang(sr) %{_datadir}/mc/help/mc.hlp.sr
 %dir %{_datadir}/mc/hints
 %{_datadir}/mc/hints/mc.hint
-# only English messages inside (as for 4.8.12)
+# only English messages inside (as for 4.8.13)
 #%lang(az) %{_datadir}/mc/hints/mc.hint.az
 %lang(be) %{_datadir}/mc/hints/mc.hint.be
-# only English messages inside (as for 4.8.12)
+# only English messages inside (as for 4.8.13)
 #%lang(bg) %{_datadir}/mc/hints/mc.hint.bg
 #%lang(ca) %{_datadir}/mc/hints/mc.hint.ca
 %lang(cs) %{_datadir}/mc/hints/mc.hint.cs
-# only English messages inside (as for 4.8.12)
+# only English messages inside (as for 4.8.13)
 #%lang(da) %{_datadir}/mc/hints/mc.hint.da
 #%lang(de) %{_datadir}/mc/hints/mc.hint.de
 #%lang(de_CH) %{_datadir}/mc/hints/mc.hint.de_CH
@@ -270,9 +270,11 @@ rm -rf $RPM_BUILD_ROOT
 %lang(et) %{_datadir}/mc/hints/mc.hint.et
 %lang(eu) %{_datadir}/mc/hints/mc.hint.eu
 %lang(fa) %{_datadir}/mc/hints/mc.hint.fa
-# only English messages inside (as for 4.8.12)
+# only English messages inside (as for 4.8.13)
 #%lang(fi) %{_datadir}/mc/hints/mc.hint.fi
 %lang(fr) %{_datadir}/mc/hints/mc.hint.fr
+# only English messages inside (as for 4.8.13)
+#%lang(fr_CA) %{_datadir}/mc/hints/mc.hint.fr_CA
 %lang(gl) %{_datadir}/mc/hints/mc.hint.gl
 # only English messages inside (as for 4.8.12)
 #%lang(hr) %{_datadir}/mc/hints/mc.hint.hr
@@ -281,7 +283,7 @@ rm -rf $RPM_BUILD_ROOT
 #%lang(ia) %{_datadir}/mc/hints/mc.hint.ia
 %lang(id) %{_datadir}/mc/hints/mc.hint.id
 %lang(it) %{_datadir}/mc/hints/mc.hint.it
-# only English messages inside (as for 4.8.12)
+# only English messages inside (as for 4.8.13)
 #%lang(ja) %{_datadir}/mc/hints/mc.hint.ja
 #%lang(ka) %{_datadir}/mc/hints/mc.hint.ka
 #%lang(kk) %{_datadir}/mc/hints/mc.hint.kk
@@ -293,12 +295,13 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pt_BR) %{_datadir}/mc/hints/mc.hint.pt_BR
 %lang(ro) %{_datadir}/mc/hints/mc.hint.ro
 %lang(ru) %{_datadir}/mc/hints/mc.hint.ru
-# only English messages inside (as for 4.8.12)
+# only English messages inside (as for 4.8.13)
 #%lang(sk) %{_datadir}/mc/hints/mc.hint.sk
 #%lang(sl) %{_datadir}/mc/hints/mc.hint.sl
 #%lang(sr) %{_datadir}/mc/hints/mc.hint.sr
 #%lang(sv) %{_datadir}/mc/hints/mc.hint.sv
 #%lang(szl) %{_datadir}/mc/hints/mc.hint.szl
+#%lang(te) %{_datadir}/mc/hints/mc.hint.te
 #%lang(tr) %{_datadir}/mc/hints/mc.hint.tr
 %lang(uk) %{_datadir}/mc/hints/mc.hint.uk
 %lang(zh_CN) %{_datadir}/mc/hints/mc.hint.zh_CN
