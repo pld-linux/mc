@@ -37,7 +37,7 @@ URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1.5
 %{?with_ext2undel:BuildRequires:	e2fsprogs-devel}
-BuildRequires:	gettext-devel >= 0.14.3
+BuildRequires:	gettext-tools >= 0.14.3
 BuildRequires:	glib2-devel >= 2.8
 %ifnarch s390 s390x
 BuildRequires:	gpm-devel
