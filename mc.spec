@@ -18,13 +18,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.8.14
+Version:	4.8.17
 Release:	1
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
 Source0:	http://ftp.midnight-commander.org/%{name}-%{version}.tar.xz
-# Source0-md5:	fbdaddb9edcf8925dcf3231331a8720b
+# Source0-md5:	0b3965f3267a76d895ce8ab90df2402b
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
@@ -217,10 +217,8 @@ install contrib/{mc.sh,mc.csh} $RPM_BUILD_ROOT/etc/shrc.d
 # enhanced version
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/mc/hints/mc.hint.{zh,zh_CN}
 
-# outdated version of fi
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/fi_FI
 # empty version of sv
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/sv_SE
+%{__rm} -rf $RPM_BUILD_ROOT%{_localedir}/sv_SE
 
 %find_lang %{name}
 
@@ -241,6 +239,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/mc/mc.*
 %{_datadir}/mc/skins
 %{_datadir}/mc/syntax
+
+%dir %{_datadir}/mc/examples
+%dir %{_datadir}/mc/examples/macros.d
+%{_datadir}/mc/examples/macros.d/*
 
 %dir %{_datadir}/mc/help
 %{_datadir}/mc/help/mc.hlp
