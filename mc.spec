@@ -217,9 +217,6 @@ install contrib/{mc.sh,mc.csh} $RPM_BUILD_ROOT/etc/shrc.d
 # enhanced version
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/mc/hints/mc.hint.{zh,zh_CN}
 
-# empty version of sv
-%{__rm} -rf $RPM_BUILD_ROOT%{_localedir}/sv_SE
-
 %find_lang %{name}
 
 %clean
@@ -254,16 +251,18 @@ rm -rf $RPM_BUILD_ROOT
 %lang(sr) %{_datadir}/mc/help/mc.hlp.sr
 %dir %{_datadir}/mc/hints
 %{_datadir}/mc/hints/mc.hint
-# only English messages inside (as for 4.8.14)
+# only English messages inside (as for 4.8.17)
+#%lang(ar) %{_datadir}/mc/hints/mc.hint.ar
 #%lang(az) %{_datadir}/mc/hints/mc.hint.az
 %lang(be) %{_datadir}/mc/hints/mc.hint.be
-# only English messages inside (as for 4.8.14)
-#%lang(bg) %{_datadir}/mc/hints/mc.hint.bg
+%lang(bg) %{_datadir}/mc/hints/mc.hint.bg
+# only English messages inside (as for 4.8.17)
 #%lang(ca) %{_datadir}/mc/hints/mc.hint.ca
 %lang(cs) %{_datadir}/mc/hints/mc.hint.cs
-# only English messages inside (as for 4.8.14)
+# only English messages inside (as for 4.8.17)
 #%lang(da) %{_datadir}/mc/hints/mc.hint.da
-#%lang(de) %{_datadir}/mc/hints/mc.hint.de
+%lang(de) %{_datadir}/mc/hints/mc.hint.de
+# only English messages inside (as for 4.8.17)
 #%lang(de_CH) %{_datadir}/mc/hints/mc.hint.de_CH
 %lang(el) %{_datadir}/mc/hints/mc.hint.el
 %lang(en_GB) %{_datadir}/mc/hints/mc.hint.en_GB
@@ -272,20 +271,20 @@ rm -rf $RPM_BUILD_ROOT
 %lang(et) %{_datadir}/mc/hints/mc.hint.et
 %lang(eu) %{_datadir}/mc/hints/mc.hint.eu
 %lang(fa) %{_datadir}/mc/hints/mc.hint.fa
-# only English messages inside (as for 4.8.14)
+# only English messages inside (as for 4.8.17)
 #%lang(fi) %{_datadir}/mc/hints/mc.hint.fi
 %lang(fr) %{_datadir}/mc/hints/mc.hint.fr
-# only English messages inside (as for 4.8.14)
+# only English messages inside (as for 4.8.17)
 #%lang(fr_CA) %{_datadir}/mc/hints/mc.hint.fr_CA
 %lang(gl) %{_datadir}/mc/hints/mc.hint.gl
-# only English messages inside (as for 4.8.14)
+# only English messages inside (as for 4.8.17)
 #%lang(hr) %{_datadir}/mc/hints/mc.hint.hr
 %lang(hu) %{_datadir}/mc/hints/mc.hint.hu
-# only English messages inside (as for 4.8.14)
+# only English messages inside (as for 4.8.17)
 #%lang(ia) %{_datadir}/mc/hints/mc.hint.ia
 %lang(id) %{_datadir}/mc/hints/mc.hint.id
 %lang(it) %{_datadir}/mc/hints/mc.hint.it
-# only English messages inside (as for 4.8.14)
+# only English messages inside (as for 4.8.17)
 #%lang(ja) %{_datadir}/mc/hints/mc.hint.ja
 #%lang(ka) %{_datadir}/mc/hints/mc.hint.ka
 #%lang(kk) %{_datadir}/mc/hints/mc.hint.kk
@@ -298,14 +297,14 @@ rm -rf $RPM_BUILD_ROOT
 %lang(ro) %{_datadir}/mc/hints/mc.hint.ro
 %lang(ru) %{_datadir}/mc/hints/mc.hint.ru
 %lang(sk) %{_datadir}/mc/hints/mc.hint.sk
-# only English messages inside (as for 4.8.14)
+# only English messages inside (as for 4.8.17)
 #%lang(sl) %{_datadir}/mc/hints/mc.hint.sl
 %lang(sr) %{_datadir}/mc/hints/mc.hint.sr
-# only English messages inside (as for 4.8.14)
+# only English messages inside (as for 4.8.17)
 #%lang(sv) %{_datadir}/mc/hints/mc.hint.sv
 #%lang(szl) %{_datadir}/mc/hints/mc.hint.szl
 #%lang(te) %{_datadir}/mc/hints/mc.hint.te
-#%lang(tr) %{_datadir}/mc/hints/mc.hint.tr
+%lang(tr) %{_datadir}/mc/hints/mc.hint.tr
 %lang(uk) %{_datadir}/mc/hints/mc.hint.uk
 %lang(zh_CN) %{_datadir}/mc/hints/mc.hint.zh_CN
 
