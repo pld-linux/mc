@@ -25,10 +25,11 @@ diff -urN mc-2006-02-24-22.org/syntax/cvs-userlist.syntax mc-2006-02-24-22/synta
 diff -urN mc-2006-02-24-22.org/syntax/Makefile.am mc-2006-02-24-22/syntax/Makefile.am
 --- mc-2006-02-24-22.org/misc/syntax/Makefile.am	2006-01-30 18:01:58.000000000 +0100
 +++ mc-2006-02-24-22/misc/syntax/Makefile.am	2006-02-28 17:38:02.617073750 +0100
-@@ -11,6 +11,7 @@
+@@ -11,7 +11,8 @@
  	debian-sources-list.syntax \
  	cs.syntax		\
  	css.syntax		\
+ 	cuda.syntax		\
 +	cvs-userlist.syntax	\
  	cxx.syntax		\
  	d.syntax		\
