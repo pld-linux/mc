@@ -1,12 +1,13 @@
-diff -urNp mc-4.6.2-pre1.orig/edit/editdraw.c mc-4.6.2-pre1/edit/editdraw.c
---- mc-4.6.2-pre1.orig/src/editor/editdraw.c	2007-08-27 14:06:03.000000000 +0200
-+++ mc-4.6.2-pre1/src/editor/editdraw.c	2008-05-05 12:00:49.000000000 +0200
-@@ -296,7 +296,7 @@
-     }
- }
+--- mc-4.8.19/src/editor/editdraw.c.orig	2017-03-04 18:51:38.000000000 +0100
++++ mc-4.8.19/src/editor/editdraw.c	2017-03-11 18:27:31.941897138 +0100
+@@ -63,8 +63,8 @@
+ /* Toggles statusbar draw style */
+ gboolean simple_statusbar = FALSE;
  
--int visible_tabs = 1, visible_tws = 1;
-+int visible_tabs = 0, visible_tws = 0;
+-gboolean visible_tws = TRUE;
+-gboolean visible_tabs = TRUE;
++gboolean visible_tws = FALSE;
++gboolean visible_tabs = FALSE;
  
- /* b is a pointer to the beginning of the line */
- static void
+ /*** file scope macro definitions ****************************************************************/
+ 
