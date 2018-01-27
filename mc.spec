@@ -42,6 +42,7 @@ BuildRequires:	glib2-devel >= 2.8
 %ifnarch s390 s390x
 BuildRequires:	gpm-devel
 %endif
+BuildRequires:	libssh2-devel >= 1.2.5
 BuildRequires:	libtool
 BuildRequires:	pam-devel
 BuildRequires:	pcre-devel
