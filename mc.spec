@@ -18,13 +18,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.8.19
-Release:	2
+Version:	4.8.20
+Release:	1
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
 Source0:	http://ftp.midnight-commander.org/%{name}-%{version}.tar.xz
-# Source0-md5:	57209d138c0adcb9ea01dfe6bbb4cb87
+# Source0-md5:	7f808b01f3f7d9aa52152a9efb86dbca
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
@@ -227,10 +227,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc NEWS README doc/keybind-migration.txt
 %config /etc/shrc.d/*
 %attr(755,root,root) %{_bindir}/mc*
-%dir %{_libdir}/mc
-%attr(755,root,root) %{_libdir}/mc/cons.saver
-%attr(755,root,root) %{_libdir}/mc/*.sh
-%attr(755,root,root) %{_libdir}/mc/*.csh
+%dir %{_libexecdir}/mc
+%attr(755,root,root) %{_libexecdir}/mc/cons.saver
+%attr(755,root,root) %{_libexecdir}/mc/*.sh
+%attr(755,root,root) %{_libexecdir}/mc/*.csh
 %dir %{_datadir}/mc
 
 %{_datadir}/mc/mc.*
@@ -300,54 +300,54 @@ rm -rf $RPM_BUILD_ROOT
 #%lang(uz) %{_datadir}/mc/hints/mc.hint.uz
 %lang(zh_CN) %{_datadir}/mc/hints/mc.hint.zh_CN
 
-%dir %{_libdir}/mc/ext.d
-%attr(755,root,root) %{_libdir}/mc/ext.d/archive.sh
-%attr(755,root,root) %{_libdir}/mc/ext.d/doc.sh
-%attr(755,root,root) %{_libdir}/mc/ext.d/image.sh
-%attr(755,root,root) %{_libdir}/mc/ext.d/misc.sh
-%attr(755,root,root) %{_libdir}/mc/ext.d/package.sh
-%attr(755,root,root) %{_libdir}/mc/ext.d/sound.sh
-%attr(755,root,root) %{_libdir}/mc/ext.d/text.sh
-%attr(755,root,root) %{_libdir}/mc/ext.d/video.sh
-%attr(755,root,root) %{_libdir}/mc/ext.d/web.sh
+%dir %{_libexecdir}/mc/ext.d
+%attr(755,root,root) %{_libexecdir}/mc/ext.d/archive.sh
+%attr(755,root,root) %{_libexecdir}/mc/ext.d/doc.sh
+%attr(755,root,root) %{_libexecdir}/mc/ext.d/image.sh
+%attr(755,root,root) %{_libexecdir}/mc/ext.d/misc.sh
+%attr(755,root,root) %{_libexecdir}/mc/ext.d/package.sh
+%attr(755,root,root) %{_libexecdir}/mc/ext.d/sound.sh
+%attr(755,root,root) %{_libexecdir}/mc/ext.d/text.sh
+%attr(755,root,root) %{_libexecdir}/mc/ext.d/video.sh
+%attr(755,root,root) %{_libexecdir}/mc/ext.d/web.sh
 
-%dir %{_libdir}/mc/extfs.d
-%{_libdir}/mc/extfs.d/README*
+%dir %{_libexecdir}/mc/extfs.d
+%{_libexecdir}/mc/extfs.d/README*
 %if %{with perl_vfs}
-%attr(755,root,root) %{_libdir}/mc/extfs.d/a+
-%attr(755,root,root) %{_libdir}/mc/extfs.d/apt+
-%attr(755,root,root) %{_libdir}/mc/extfs.d/deb*
-%attr(755,root,root) %{_libdir}/mc/extfs.d/dpkg+
-%attr(755,root,root) %{_libdir}/mc/extfs.d/mailfs
-%attr(755,root,root) %{_libdir}/mc/extfs.d/patchfs
-%attr(755,root,root) %{_libdir}/mc/extfs.d/rpms+
-%attr(755,root,root) %{_libdir}/mc/extfs.d/ulib
-%attr(755,root,root) %{_libdir}/mc/extfs.d/uzip
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/a+
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/apt+
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/deb*
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/dpkg+
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/mailfs
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/patchfs
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/rpms+
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/ulib
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/uzip
 %endif
-%attr(755,root,root) %{_libdir}/mc/extfs.d/audio
-%attr(755,root,root) %{_libdir}/mc/extfs.d/bpp
-%attr(755,root,root) %{_libdir}/mc/extfs.d/changesetfs
-%attr(755,root,root) %{_libdir}/mc/extfs.d/gitfs+
-%attr(755,root,root) %{_libdir}/mc/extfs.d/hp48+
-%attr(755,root,root) %{_libdir}/mc/extfs.d/iso9660
-%attr(755,root,root) %{_libdir}/mc/extfs.d/lslR
-%attr(755,root,root) %{_libdir}/mc/extfs.d/patchsetfs
-%attr(755,root,root) %{_libdir}/mc/extfs.d/rpm
-%attr(755,root,root) %{_libdir}/mc/extfs.d/s3+
-%attr(755,root,root) %{_libdir}/mc/extfs.d/trpm
-%attr(755,root,root) %{_libdir}/mc/extfs.d/u7z
-%attr(755,root,root) %{_libdir}/mc/extfs.d/uace
-%attr(755,root,root) %{_libdir}/mc/extfs.d/ualz
-%attr(755,root,root) %{_libdir}/mc/extfs.d/uar*
-%attr(755,root,root) %{_libdir}/mc/extfs.d/uc1541
-%attr(755,root,root) %{_libdir}/mc/extfs.d/ucab
-%attr(755,root,root) %{_libdir}/mc/extfs.d/uha
-%attr(755,root,root) %{_libdir}/mc/extfs.d/ulha
-%attr(755,root,root) %{_libdir}/mc/extfs.d/urar
-%attr(755,root,root) %{_libdir}/mc/extfs.d/uzoo
-%dir %{_libdir}/mc/fish
-%{_libdir}/mc/fish/README.fish
-%attr(755,root,root) %{_libdir}/mc/fish/[a-z]*
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/audio
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/bpp
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/changesetfs
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/gitfs+
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/hp48+
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/iso9660
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/lslR
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/patchsetfs
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/rpm
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/s3+
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/trpm
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/u7z
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/uace
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/ualz
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/uar*
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/uc1541
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/ucab
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/uha
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/ulha
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/urar
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/uzoo
+%dir %{_libexecdir}/mc/fish
+%{_libexecdir}/mc/fish/README.fish
+%attr(755,root,root) %{_libexecdir}/mc/fish/[a-z]*
 %{_desktopdir}/mc.desktop
 %{_pixmapsdir}/mc.png
 
