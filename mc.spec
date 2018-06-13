@@ -18,13 +18,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.8.20
-Release:	2
+Version:	4.8.21
+Release:	1
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
 Source0:	http://ftp.midnight-commander.org/%{name}-%{version}.tar.xz
-# Source0-md5:	7f808b01f3f7d9aa52152a9efb86dbca
+# Source0-md5:	743a421db8a5469bb373874cd6efbcb2
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
@@ -33,6 +33,7 @@ Patch2:		%{name}-no-ws-visible.patch
 Patch3:		%{name}-noperl-vfs.patch
 # at now syntax highligthing for PLD-update-TODO and CVSROOT/users
 Patch4:		%{name}-pld-developerfriendly.patch
+Patch5:		ebook-ext.patcch
 URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1.5
@@ -160,6 +161,7 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 %patch2 -p1
 %{!?with_perl_vfs:%patch3 -p1}
 %patch4 -p1
+%patch5 -p1
 
 %{__rm} po/stamp-po
 
@@ -252,15 +254,15 @@ rm -rf $RPM_BUILD_ROOT
 %lang(sr) %{_datadir}/mc/help/mc.hlp.sr
 %dir %{_datadir}/mc/hints
 %{_datadir}/mc/hints/mc.hint
-# disabled hint files contain only English messages (as for 4.8.18)
+# disabled hint files contain only English messages (as for 4.8.21)
 #%lang(af) %{_datadir}/mc/hints/mc.hint.af
 #%lang(ar) %{_datadir}/mc/hints/mc.hint.ar
 #%lang(az) %{_datadir}/mc/hints/mc.hint.az
 %lang(be) %{_datadir}/mc/hints/mc.hint.be
 %lang(bg) %{_datadir}/mc/hints/mc.hint.bg
-#%lang(ca) %{_datadir}/mc/hints/mc.hint.ca
+%lang(ca) %{_datadir}/mc/hints/mc.hint.ca
 %lang(cs) %{_datadir}/mc/hints/mc.hint.cs
-#%lang(da) %{_datadir}/mc/hints/mc.hint.da
+%lang(da) %{_datadir}/mc/hints/mc.hint.da
 %lang(de) %{_datadir}/mc/hints/mc.hint.de
 #%lang(de_CH) %{_datadir}/mc/hints/mc.hint.de_CH
 %lang(el) %{_datadir}/mc/hints/mc.hint.el
@@ -273,17 +275,18 @@ rm -rf $RPM_BUILD_ROOT
 #%lang(fi) %{_datadir}/mc/hints/mc.hint.fi
 %lang(fr) %{_datadir}/mc/hints/mc.hint.fr
 #%lang(fr_CA) %{_datadir}/mc/hints/mc.hint.fr_CA
+%lang(ga) %{_datadir}/mc/hints/mc.hint.ga
 %lang(gl) %{_datadir}/mc/hints/mc.hint.gl
 #%lang(hr) %{_datadir}/mc/hints/mc.hint.hr
 %lang(hu) %{_datadir}/mc/hints/mc.hint.hu
 #%lang(ia) %{_datadir}/mc/hints/mc.hint.ia
 %lang(id) %{_datadir}/mc/hints/mc.hint.id
 %lang(it) %{_datadir}/mc/hints/mc.hint.it
-#%lang(ja) %{_datadir}/mc/hints/mc.hint.ja
+%lang(ja) %{_datadir}/mc/hints/mc.hint.ja
 #%lang(ka) %{_datadir}/mc/hints/mc.hint.ka
 #%lang(kk) %{_datadir}/mc/hints/mc.hint.kk
 #%lang(ko) %{_datadir}/mc/hints/mc.hint.ko
-#%lang(lt) %{_datadir}/mc/hints/mc.hint.lt
+%lang(lt) %{_datadir}/mc/hints/mc.hint.lt
 %lang(nl) %{_datadir}/mc/hints/mc.hint.nl
 %lang(pl) %{_datadir}/mc/hints/mc.hint.pl
 %lang(pt) %{_datadir}/mc/hints/mc.hint.pt
@@ -293,7 +296,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(sk) %{_datadir}/mc/hints/mc.hint.sk
 #%lang(sl) %{_datadir}/mc/hints/mc.hint.sl
 %lang(sr) %{_datadir}/mc/hints/mc.hint.sr
-#%lang(sv) %{_datadir}/mc/hints/mc.hint.sv
+%lang(sv) %{_datadir}/mc/hints/mc.hint.sv
 #%lang(szl) %{_datadir}/mc/hints/mc.hint.szl
 #%lang(te) %{_datadir}/mc/hints/mc.hint.te
 %lang(tr) %{_datadir}/mc/hints/mc.hint.tr

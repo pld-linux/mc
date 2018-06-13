@@ -1,0 +1,11 @@
+--- mc-4.8.21/misc/mc.ext.in~	2018-05-27 21:56:21.000000000 +0200
++++ mc-4.8.21/misc/mc.ext.in	2018-06-13 23:35:38.484935556 +0200
+@@ -657,7 +657,7 @@
+ 	Open=@EXTHELPERSDIR@/doc.sh open comic
+ 
+ # Epub & mobi
+-regex/i/\.(epub|mobi)$
++regex/i/\.(epub|mobi|lrf|lrs|azw[123]?|pobi)$
+ 	Open=@EXTHELPERSDIR@/doc.sh open epub
+ 	View=%view{ascii} @EXTHELPERSDIR@/doc.sh view epub
+ 
