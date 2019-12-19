@@ -19,7 +19,7 @@ Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
 Version:	4.8.23
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
@@ -176,6 +176,7 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 
 export X11_WWW="xdg-open"
 %configure \
+	PYTHON=%{_bindir}/python2 \
 	%{?with_ext2undel:--enable-vfs-undelfs} \
 	%{?with_samba:--enable-vfs-smb} \
 	--with-smb-configdir=/etc/samba \
