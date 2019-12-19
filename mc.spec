@@ -34,6 +34,7 @@ Patch3:		%{name}-noperl-vfs.patch
 # at now syntax highligthing for PLD-update-TODO and CVSROOT/users
 Patch4:		%{name}-pld-developerfriendly.patch
 Patch5:		ebook-ext.patcch
+Patch6:		gettext.patch
 URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1.5
@@ -162,6 +163,7 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 %{!?with_perl_vfs:%patch3 -p1}
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %{__rm} po/stamp-po
 
