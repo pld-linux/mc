@@ -18,13 +18,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.8.23
-Release:	2
+Version:	4.8.24
+Release:	1
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
 Source0:	http://ftp.midnight-commander.org/%{name}-%{version}.tar.xz
-# Source0-md5:	466c3135f727f8ac2102d060a080ace3
+# Source0-md5:	3a11df2dd379dd67c497c8d2c344715c
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
@@ -34,7 +34,6 @@ Patch3:		%{name}-noperl-vfs.patch
 # at now syntax highligthing for PLD-update-TODO and CVSROOT/users
 Patch4:		%{name}-pld-developerfriendly.patch
 Patch5:		ebook-ext.patcch
-Patch6:		gettext.patch
 URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1.5
@@ -163,11 +162,13 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 %{!?with_perl_vfs:%patch3 -p1}
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 %{__rm} po/stamp-po
 
 %{__sed} -i 's:|hxx|:|hxx|tcc|:' misc/syntax/Syntax.in
+
+sed -E -i -e '1s,#!\s*/usr/bin/env\s+python2(\s|$),#!%{__python}\1,' -e '1s,#!\s*/usr/bin/env\s+python(\s|$),#!%{__python}\1,' -e '1s,#!\s*/usr/bin/python(\s|$),#!%{__python}\1,' \
+      src/vfs/extfs/helpers/uc1541
 
 %build
 %{__gettextize}
@@ -178,7 +179,7 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 
 export X11_WWW="xdg-open"
 %configure \
-	PYTHON=%{_bindir}/python2 \
+	PYTHON=%{_bindir}/python3 \
 	%{?with_ext2undel:--enable-vfs-undelfs} \
 	%{?with_samba:--enable-vfs-smb} \
 	--with-smb-configdir=/etc/samba \
