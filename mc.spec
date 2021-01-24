@@ -18,13 +18,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.8.24
+Version:	4.8.26
 Release:	1
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
 Source0:	http://ftp.midnight-commander.org/%{name}-%{version}.tar.xz
-# Source0-md5:	3a11df2dd379dd67c497c8d2c344715c
+# Source0-md5:	3c1f77b71dba1f4eeeedc4276627fed7
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
@@ -39,7 +39,7 @@ BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1.5
 %{?with_ext2undel:BuildRequires:	e2fsprogs-devel}
 BuildRequires:	gettext-tools >= 0.14.3
-BuildRequires:	glib2-devel >= 2.8
+BuildRequires:	glib2-devel >= 2.30.0
 %ifnarch s390 s390x
 BuildRequires:	gpm-devel
 %endif
@@ -351,7 +351,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libexecdir}/mc/extfs.d/ucab
 %attr(755,root,root) %{_libexecdir}/mc/extfs.d/uha
 %attr(755,root,root) %{_libexecdir}/mc/extfs.d/ulha
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/unar
 %attr(755,root,root) %{_libexecdir}/mc/extfs.d/urar
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/uwim
 %attr(755,root,root) %{_libexecdir}/mc/extfs.d/uzoo
 %dir %{_libexecdir}/mc/fish
 %{_libexecdir}/mc/fish/README.fish
