@@ -38,13 +38,13 @@ URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1.5
 %{?with_ext2undel:BuildRequires:	e2fsprogs-devel}
-BuildRequires:	gettext-tools >= 0.14.3
-BuildRequires:	glib2-devel >= 2.30.0
+BuildRequires:	gettext-tools >= 0.18.1
+BuildRequires:	glib2-devel >= 1:2.30.0
 %ifnarch s390 s390x
 BuildRequires:	gpm-devel
 %endif
 BuildRequires:	libssh2-devel >= 1.2.5
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2
 BuildRequires:	pam-devel
 BuildRequires:	pcre-devel
 BuildRequires:	pkgconfig
@@ -54,6 +54,8 @@ BuildRequires:	sed >= 4.0
 BuildRequires:	slang-devel >= 2.2.1
 %{?with_x:BuildRequires:	xorg-lib-libX11-devel}
 Requires:	file
+Requires:	glib2 >= 1:2.30.0
+Requires:	libssh2 >= 1.2.5
 Requires:	pam >= 0.77.3
 Requires:	sed
 Requires:	setup >= 2.4.6-2
@@ -232,7 +234,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc NEWS README
-%config /etc/shrc.d/*
+%config /etc/shrc.d/mc.*
 %attr(755,root,root) %{_bindir}/mc*
 %dir %{_libexecdir}/mc
 %attr(755,root,root) %{_libexecdir}/mc/cons.saver
@@ -258,10 +260,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(sr) %{_datadir}/mc/help/mc.hlp.sr
 %dir %{_datadir}/mc/hints
 %{_datadir}/mc/hints/mc.hint
-# disabled hint files contain only English messages (as for 4.8.22)
-#%lang(af) %{_datadir}/mc/hints/mc.hint.af
-#%lang(ar) %{_datadir}/mc/hints/mc.hint.ar
-#%lang(az) %{_datadir}/mc/hints/mc.hint.az
+# disabled hint files contain only English messages (as for 4.8.26)
 %lang(be) %{_datadir}/mc/hints/mc.hint.be
 %lang(bg) %{_datadir}/mc/hints/mc.hint.bg
 %lang(ca) %{_datadir}/mc/hints/mc.hint.ca
@@ -276,21 +275,17 @@ rm -rf $RPM_BUILD_ROOT
 %lang(et) %{_datadir}/mc/hints/mc.hint.et
 %lang(eu) %{_datadir}/mc/hints/mc.hint.eu
 %lang(fa) %{_datadir}/mc/hints/mc.hint.fa
-#%lang(fi) %{_datadir}/mc/hints/mc.hint.fi
 %lang(fr) %{_datadir}/mc/hints/mc.hint.fr
 #%lang(fr_CA) %{_datadir}/mc/hints/mc.hint.fr_CA
 %lang(ga) %{_datadir}/mc/hints/mc.hint.ga
 %lang(gl) %{_datadir}/mc/hints/mc.hint.gl
-#%lang(hr) %{_datadir}/mc/hints/mc.hint.hr
 %lang(hu) %{_datadir}/mc/hints/mc.hint.hu
-#%lang(ia) %{_datadir}/mc/hints/mc.hint.ia
 %lang(id) %{_datadir}/mc/hints/mc.hint.id
 %lang(it) %{_datadir}/mc/hints/mc.hint.it
 %lang(ja) %{_datadir}/mc/hints/mc.hint.ja
-#%lang(ka) %{_datadir}/mc/hints/mc.hint.ka
-#%lang(kk) %{_datadir}/mc/hints/mc.hint.kk
-#%lang(ko) %{_datadir}/mc/hints/mc.hint.ko
+%lang(ko) %{_datadir}/mc/hints/mc.hint.ko
 %lang(lt) %{_datadir}/mc/hints/mc.hint.lt
+%lang(nb) %{_datadir}/mc/hints/mc.hint.nb
 %lang(nl) %{_datadir}/mc/hints/mc.hint.nl
 %lang(pl) %{_datadir}/mc/hints/mc.hint.pl
 %lang(pt) %{_datadir}/mc/hints/mc.hint.pt
@@ -298,15 +293,12 @@ rm -rf $RPM_BUILD_ROOT
 %lang(ro) %{_datadir}/mc/hints/mc.hint.ro
 %lang(ru) %{_datadir}/mc/hints/mc.hint.ru
 %lang(sk) %{_datadir}/mc/hints/mc.hint.sk
-#%lang(sl) %{_datadir}/mc/hints/mc.hint.sl
 %lang(sr) %{_datadir}/mc/hints/mc.hint.sr
 %lang(sv) %{_datadir}/mc/hints/mc.hint.sv
-#%lang(szl) %{_datadir}/mc/hints/mc.hint.szl
-#%lang(te) %{_datadir}/mc/hints/mc.hint.te
 %lang(tr) %{_datadir}/mc/hints/mc.hint.tr
 %lang(uk) %{_datadir}/mc/hints/mc.hint.uk
-#%lang(uz) %{_datadir}/mc/hints/mc.hint.uz
 %lang(zh_CN) %{_datadir}/mc/hints/mc.hint.zh_CN
+%lang(zh_TW) %{_datadir}/mc/hints/mc.hint.zh_TW
 
 %dir %{_libexecdir}/mc/ext.d
 %attr(755,root,root) %{_libexecdir}/mc/ext.d/archive.sh
