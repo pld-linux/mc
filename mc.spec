@@ -33,7 +33,7 @@ Patch2:		%{name}-no-ws-visible.patch
 Patch3:		%{name}-noperl-vfs.patch
 # at now syntax highligthing for PLD-update-TODO and CVSROOT/users
 Patch4:		%{name}-pld-developerfriendly.patch
-Patch5:		ebook-ext.patcch
+Patch5:		ebook-ext.patch
 URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1.5
