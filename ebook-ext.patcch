@@ -5,7 +5,7 @@
  
  # Epub & mobi
 -regex/i/\.(epub|mobi)$
-+regex/i/\.(epub|mobi|lrf|lrs|azw[123]?|pobi)$
++regex/i/\.(epub|mobi|lrf|lrs|azw[123]?|pobi|lit|fb2)$
  	Open=@EXTHELPERSDIR@/doc.sh open epub
  	View=%view{ascii} @EXTHELPERSDIR@/doc.sh view epub
  
