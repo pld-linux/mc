@@ -52,7 +52,9 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
 BuildRequires:	slang-devel >= 2.2.1
+BuildRequires:	tar >= 1:1.22
 %{?with_x:BuildRequires:	xorg-lib-libX11-devel}
+BuildRequires:	xz
 Requires:	file
 Requires:	glib2 >= 1:2.30.0
 Requires:	libssh2 >= 1.2.5
