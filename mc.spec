@@ -74,7 +74,7 @@ Suggests:	ghostscript
 Suggests:	groff
 Suggests:	gzip
 Suggests:	lha
-Suggests:	links
+Suggests:	links2
 Suggests:	lynx
 Suggests:	lzma
 Suggests:	odt2txt
