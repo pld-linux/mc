@@ -3,9 +3,9 @@
 @@ -657,7 +657,7 @@
  	Open=@EXTHELPERSDIR@/doc.sh open comic
  
- # Epub & mobi
--regex/i/\.(epub|mobi)$
+ # Epup, mobi, fb2
+-regex/i/\.(epub|mobi|fb2)$
 +regex/i/\.(epub|mobi|lrf|lrs|azw[123]?|pobi|lit|fb2)$
- 	Open=@EXTHELPERSDIR@/doc.sh open epub
- 	View=%view{ascii} @EXTHELPERSDIR@/doc.sh view epub
+ 	Open=@EXTHELPERSDIR@/doc.sh open ebook
+ 	View=%view{ascii} @EXTHELPERSDIR@/doc.sh view ebook
  

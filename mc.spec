@@ -18,13 +18,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.8.26
-Release:	2
+Version:	4.8.27
+Release:	1
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
 Source0:	http://ftp.midnight-commander.org/%{name}-%{version}.tar.xz
-# Source0-md5:	3c1f77b71dba1f4eeeedc4276627fed7
+# Source0-md5:	e51cd40a897d9aa01af251d191637ca4
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
@@ -34,18 +34,17 @@ Patch3:		%{name}-noperl-vfs.patch
 # at now syntax highligthing for PLD-update-TODO and CVSROOT/users
 Patch4:		%{name}-pld-developerfriendly.patch
 Patch5:		ebook-ext.patch
-Patch6:		zip.patch
 URL:		http://www.midnight-commander.org/
-BuildRequires:	autoconf >= 2.60
-BuildRequires:	automake >= 1.5
+BuildRequires:	autoconf >= 2.64
+BuildRequires:	automake >= 1:1.12
 %{?with_ext2undel:BuildRequires:	e2fsprogs-devel}
 BuildRequires:	file
-BuildRequires:	gettext-tools >= 0.18.1
+BuildRequires:	gettext-tools >= 0.21
 BuildRequires:	glib2-devel >= 1:2.30.0
 %ifnarch s390 s390x
 BuildRequires:	gpm-devel
 %endif
-BuildRequires:	libssh2-devel >= 1.2.5
+BuildRequires:	libssh2-devel >= 1.2.8
 BuildRequires:	libtool >= 2:2
 BuildRequires:	pam-devel
 BuildRequires:	pcre-devel
@@ -59,7 +58,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	file
 Requires:	glib2 >= 1:2.30.0
-Requires:	libssh2 >= 1.2.5
+Requires:	libssh2 >= 1.2.8
 Requires:	pam >= 0.77.3
 Requires:	sed
 Requires:	setup >= 2.4.6-2
@@ -168,7 +167,6 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 %{!?with_perl_vfs:%patch3 -p1}
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 %{__rm} po/stamp-po
 
