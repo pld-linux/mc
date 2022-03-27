@@ -2,7 +2,6 @@
 # Conditional build:
 %bcond_with	ext2undel	# with ext2 undelete fs
 %bcond_without	perl_vfs	# without perl depending vfs'es -- to avoid perl autoreq
-%bcond_with	samba		# with SAMBA vfs support
 %bcond_without	x		# without text edit in X support
 #
 Summary:	A user-friendly file manager and visual shell
@@ -18,13 +17,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.8.27
+Version:	4.8.28
 Release:	1
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
 Source0:	http://ftp.midnight-commander.org/%{name}-%{version}.tar.xz
-# Source0-md5:	e51cd40a897d9aa01af251d191637ca4
+# Source0-md5:	850063700c3025cfd2ae5e16a4a9b9e5
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
@@ -187,9 +186,6 @@ export X11_WWW="xdg-open"
 %configure \
 	PYTHON=%{_bindir}/python3 \
 	%{?with_ext2undel:--enable-vfs-undelfs} \
-	%{?with_samba:--enable-vfs-smb} \
-	--with-smb-configdir=/etc/samba \
-	--with-smb-codepagedir=/etc/samba/codepages \
 	--with%{!?with_x:out}-x \
 	--with-gpm-mouse \
 	--with-pcre \
