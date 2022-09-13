@@ -18,7 +18,7 @@ Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
 Version:	4.8.28
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
@@ -171,7 +171,7 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 
 %{__sed} -i 's:|hxx|:|hxx|tcc|:' misc/syntax/Syntax.in
 
-sed -E -i -e '1s,#!\s*/usr/bin/env\s+python2(\s|$),#!%{__python}\1,' -e '1s,#!\s*/usr/bin/env\s+python(\s|$),#!%{__python}\1,' -e '1s,#!\s*/usr/bin/python(\s|$),#!%{__python}\1,' \
+sed -E -i -e '1s,#!\s*/usr/bin/env\s+python(\s|$),#!%{__python3}\1,' \
       src/vfs/extfs/helpers/uc1541
 
 %build
