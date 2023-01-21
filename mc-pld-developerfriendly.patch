@@ -39,7 +39,7 @@ diff -urN mc-2006-02-24-22.org/syntax/cvs-userlist.syntax mc-2006-02-24-22/synta
 +	pld-update-todo.syntax	\
  	po.syntax		\
  	povray.syntax		\
-	procmail.syntax		\
+ 	privoxy.syntax		\
 diff -urN mc-2006-02-24-22.org/syntax/pld-update-todo.syntax mc-2006-02-24-22/syntax/pld-update-todo.syntax
 --- mc-2006-02-24-22.org/misc/syntax/pld-update-todo.syntax	1970-01-01 01:00:00.000000000 +0100
 +++ mc-2006-02-24-22/misc/syntax/pld-update-todo.syntax	2006-02-28 17:37:11.805898250 +0100

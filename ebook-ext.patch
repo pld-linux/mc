@@ -1,11 +1,11 @@
---- mc-4.8.21/misc/mc.ext.in~	2018-05-27 21:56:21.000000000 +0200
-+++ mc-4.8.21/misc/mc.ext.in	2018-06-13 23:35:38.484935556 +0200
-@@ -657,7 +657,7 @@
- 	Open=@EXTHELPERSDIR@/doc.sh open comic
+--- mc-4.8.29/misc/mc.ext.ini.in.orig	2023-01-21 19:47:35.064136279 +0100
++++ mc-4.8.29/misc/mc.ext.ini.in	2023-01-21 19:48:32.237275405 +0100
+@@ -766,7 +766,7 @@
  
  # Epup, mobi, fb2
--regex/i/\.(epub|mobi|fb2)$
-+regex/i/\.(epub|mobi|lrf|lrs|azw[123]?|pobi|lit|fb2)$
- 	Open=@EXTHELPERSDIR@/doc.sh open ebook
- 	View=%view{ascii} @EXTHELPERSDIR@/doc.sh view ebook
- 
+ [ebook]
+-Regex=\.(epub|mobi|fb2)$
++Regex=\.(epub|mobi|lrf|lrs|azw[123]?|pobi|lit|fb2)$
+ RegexIgnoreCase=true
+ Open=@EXTHELPERSDIR@/doc.sh open ebook
+ View=%view{ascii} @EXTHELPERSDIR@/doc.sh view ebook
