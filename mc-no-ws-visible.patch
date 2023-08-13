@@ -1,13 +1,13 @@
---- mc-4.8.19/src/editor/editdraw.c.orig	2017-03-04 18:51:38.000000000 +0100
-+++ mc-4.8.19/src/editor/editdraw.c	2017-03-11 18:27:31.941897138 +0100
-@@ -63,8 +63,8 @@
- /* Toggles statusbar draw style */
- gboolean simple_statusbar = FALSE;
- 
--gboolean visible_tws = TRUE;
--gboolean visible_tabs = TRUE;
-+gboolean visible_tws = FALSE;
-+gboolean visible_tabs = FALSE;
- 
- /*** file scope macro definitions ****************************************************************/
- 
+--- mc-4.8.30/src/editor/edit.c.orig	2023-08-06 15:26:05.000000000 +0200
++++ mc-4.8.30/src/editor/edit.c	2023-08-14 01:05:51.126667829 +0200
+@@ -99,8 +99,8 @@
+     .backup_ext = NULL,
+     .filesize_threshold = NULL,
+     .stop_format_chars = NULL,
+-    .visible_tabs = TRUE,
+-    .visible_tws = TRUE,
++    .visible_tabs = FALSE,
++    .visible_tws = FALSE,
+     .show_right_margin = FALSE,
+     .simple_statusbar = FALSE,
+     .check_nl_at_eof = FALSE
