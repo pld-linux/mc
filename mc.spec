@@ -87,10 +87,10 @@ Suggests:	xdg-utils
 Suggests:	xpdf-tools
 Suggests:	xz
 Suggests:	zoo
-Obsoletes:	mc46
-Obsoletes:	mc46serv
-Obsoletes:	mcserv
-Obsoletes:	tkmc
+Obsoletes:	mc46 < 1:4.7
+Obsoletes:	mc46serv < 1:4.7
+Obsoletes:	mcserv < 1:4.7.4
+Obsoletes:	tkmc < 4.1.35
 Conflicts:	bash < 2.05b
 Conflicts:	rpm < 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
