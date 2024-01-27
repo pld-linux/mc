@@ -4,8 +4,8 @@
  
  # Epup, mobi, fb2
  [ebook]
--Regex=\.(epub|mobi|fb2)$
-+Regex=\.(epub|mobi|lrf|lrs|azw[123]?|pobi|lit|fb2)$
+-Regex=\\.(epub|mobi|fb2)$
++Regex=\\.(epub|mobi|lrf|lrs|azw[123]?|pobi|lit|fb2)$
  RegexIgnoreCase=true
  Open=@EXTHELPERSDIR@/doc.sh open ebook
  View=%view{ascii} @EXTHELPERSDIR@/doc.sh view ebook
