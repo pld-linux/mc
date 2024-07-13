@@ -18,7 +18,7 @@ Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
 Version:	4.8.31
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
@@ -33,6 +33,7 @@ Patch3:		%{name}-noperl-vfs.patch
 # at now syntax highligthing for PLD-update-TODO and CVSROOT/users
 Patch4:		%{name}-pld-developerfriendly.patch
 Patch5:		ebook-ext.patch
+Patch6:		typescript-ext.patch
 URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.12
@@ -166,6 +167,7 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 %{!?with_perl_vfs:%patch3 -p1}
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %{__rm} po/stamp-po
 

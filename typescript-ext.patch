@@ -1,0 +1,11 @@
+--- mc-4.8.31/misc/mc.ext.ini.in~	2024-07-13 14:49:22.000000000 +0200
++++ mc-4.8.31/misc/mc.ext.ini.in	2024-07-13 14:50:15.144930575 +0200
+@@ -462,7 +462,7 @@
+ [Typescript]
+ Shell=.ts
+ ShellIgnoreCase=true
+-Type=^Java source
++Type=^JavaScript source
+ Include=editor
+ 
+ # .so libraries
