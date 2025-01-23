@@ -163,11 +163,11 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 
 %prep
 %setup -q -a3
-%patch2 -p1
-%{!?with_perl_vfs:%patch3 -p1}
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%patch -P2 -p1
+%{!?with_perl_vfs:%patch -P3 -p1}
+%patch -P4 -p1
+%patch -P5 -p1
+%patch -P6 -p1
 
 %{__rm} po/stamp-po
 
