@@ -17,13 +17,13 @@ Summary(tr.UTF-8):	Midnight Commander görsel kabuğu
 Summary(uk.UTF-8):	Диспетчер файлів Midnight Commander
 Summary(zh_CN.UTF-8):	一个方便实用的文件管理器和虚拟Shell
 Name:		mc
-Version:	4.8.32
+Version:	4.8.33
 Release:	1
 Epoch:		1
 License:	GPL v3+
 Group:		Applications/Shells
 Source0:	http://ftp.midnight-commander.org/%{name}-%{version}.tar.xz
-# Source0-md5:	bcc9043a815c02c5837f8b1a4a60da5a
+# Source0-md5:	b3596c1f092b9822a6cd9c9a1aef8dde
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	17d7b574e1b85ad6f8ddceda9e841f19
 Source7:	%{name}.desktop
@@ -36,7 +36,7 @@ Patch5:		ebook-ext.patch
 Patch6:		typescript-ext.patch
 URL:		http://www.midnight-commander.org/
 BuildRequires:	autoconf >= 2.64
-BuildRequires:	automake >= 1:1.12
+BuildRequires:	automake >= 1:1.14
 %{?with_ext2undel:BuildRequires:	e2fsprogs-devel}
 BuildRequires:	file
 BuildRequires:	gettext-tools >= 0.21
@@ -172,9 +172,6 @@ tar, zip ve RPM dosyalarının içeriklerini gösterebilmesidir.
 %{__rm} po/stamp-po
 
 %{__sed} -i 's:|hxx|:|hxx|tcc|:' misc/syntax/Syntax.in
-
-sed -E -i -e '1s,#!\s*/usr/bin/env\s+python3(\s|$),#!%{__python3}\1,' \
-	src/vfs/extfs/helpers/uc1541
 
 %build
 %{__gettextize}
@@ -332,6 +329,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libexecdir}/mc/extfs.d/patchsetfs
 %attr(755,root,root) %{_libexecdir}/mc/extfs.d/rpm
 %attr(755,root,root) %{_libexecdir}/mc/extfs.d/s3+
+%attr(755,root,root) %{_libexecdir}/mc/extfs.d/torrent
 %attr(755,root,root) %{_libexecdir}/mc/extfs.d/trpm
 %attr(755,root,root) %{_libexecdir}/mc/extfs.d/u7z
 %attr(755,root,root) %{_libexecdir}/mc/extfs.d/uace
